@@ -8,7 +8,11 @@ import { useEffect, useState } from "react";
 import { iArticle } from "../../shared/interfaces";
 import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
 
-const BlogIndexPage = ({ articlesPerPage = 6 }: { articlesPerPage?: number }) => {
+const BlogIndexPage = ({
+  articlesPerPage = 6,
+}: {
+  articlesPerPage?: number;
+}) => {
   const router = useRouter();
   const { category, author } = router.query;
   const categoryArticles = SORTED_ARTICLES_BY_DATE.filter(

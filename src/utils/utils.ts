@@ -47,7 +47,7 @@ export const changeTheme = (): void => {
  * @returns string
  */
 export const getDeviceType = (): string => {
-  const ua = typeof window !== "undefined" ? navigator.userAgent : 'desktop';
+  const ua = typeof window !== "undefined" ? navigator.userAgent : "desktop";
   if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
     return "tablet";
   }
