@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { SORTED_ARTICLES_BY_DATE } from "../../BLOG_CONSTANTS/_ARTICLES_LIST";
 import { iArticle, iSEO } from "../shared/interfaces";
 import { WEBSITE_NAME, WEBSITE_URL } from "../../BLOG_CONSTANTS/_BLOG_SETUP";
-import { MOCK_ARTICLES_LIST } from "../constants/mocks";
+import { ARTICLES_LIST } from "../../BLOG_CONSTANTS/_ARTICLES_LIST";
 import { GAEvent } from "../../google";
 
 // env
@@ -107,7 +107,7 @@ export const getArticleDetails = (): iArticle => {
   const router = useRouter();
   const articlePath = "/pages" + router.pathname + ".tsx";
   return (
-    MOCK_ARTICLES_LIST.filter((each) => each.path.includes(articlePath))[0] ||
+    ARTICLES_LIST.filter((each) => each.path.includes(articlePath))[0] ||
     SORTED_ARTICLES_BY_DATE.filter((each) => each.path.includes(articlePath))[0]
   );
 };

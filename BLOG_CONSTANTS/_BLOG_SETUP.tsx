@@ -1,70 +1,8 @@
 import { LogoType, NavbarType } from "../src/shared/enums";
-import { IAuthor, iNavSetup, iSEO } from "../src/shared/interfaces";
-import {
-  AiFillGithub,
-  AiOutlineTwitter,
-  AiFillLinkedin,
-  AiFillInstagram,
-  AiFillFacebook,
-} from "react-icons/ai";
-
-/**
- * EXAMPLE AUTHOR
- * 
- export const AUTHOR_NAME: IAuthor = {
-    name: "Full Name",
-    designation: "Work Designation",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    profilePic: "",
-     social: [
-        {
-            icon: <AiFillGithub />,
-            link: 'https://github.com/'
-        },
-        {
-            icon: <AiFillLinkedin />,
-            link: 'https://www.linkedin.com/'
-        },
-    ]
-}
- */
-
-export const MAYUR: IAuthor = {
-  name: "Mayur Nalwala",
-  designation: "Software Engineer",
-  bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  profilePic: "",
-  social: [
-    {
-      icon: <AiFillGithub />,
-      link: "https://github.com/nmayur",
-    },
-    {
-      icon: <AiFillLinkedin />,
-      link: "https://www.linkedin.com/in/mayur-nalwala/",
-    },
-  ],
-};
-
-export const RUPALI: IAuthor = {
-  name: "Rupali Yadav",
-  designation: "IT Analyst",
-  bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  profilePic: "",
-  social: [
-    {
-      icon: <AiFillGithub />,
-      link: "https://github.com/rupali-yadav",
-    },
-    {
-      icon: <AiFillLinkedin />,
-      link: "https://www.linkedin.com/in/rupali-yadav-087bb4112/",
-    },
-  ],
-};
+import { iNavSetup, iSEO } from "../src/shared/interfaces";
 
 // This can your company name / your name etc for SEO purposes
-export const WEBSITE_NAME: string = "Next Js Blog Template";
+export const WEBSITE_NAME: string = "Histopathology E-Book";
 export const WEBSITE_URL: string =
   "https://nextjs-simple-blog-template.web.app/";
 
