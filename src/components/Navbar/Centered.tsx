@@ -14,9 +14,9 @@ const CenteredNavbar = ({
   toggleSideMenu,
   openSidebar = false,
   navSetup,
-  onShareClick
+  onShareClick,
 }: iNavbar) => {
-  const { navLinks, socials, logo } = navSetup;
+  const { navLinks, logo } = navSetup;
 
   const [openDD, setOpenDD] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -74,24 +74,6 @@ const CenteredNavbar = ({
             <span className="text-[22px] font-semibold">Logo</span>
           )}
         </LinkTo>
-
-        <div className="flex justify-end" style={{ width: "120px" }}>
-          {socials &&
-            socials.map((each: iNavSocials, i: any) => (
-              <a
-                href={each.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                key={each.link}
-                className={combineClasses(
-                  "dark:text-white text-black text-[24px] d-inline-block",
-                  i === socials.length - 1 ? "ml-3" : "mx-3"
-                )}
-              >
-                {each.icon}
-              </a>
-            ))}
-        </div>
       </div>
       <div className="flex justify-center items-center font-regular text-[14px] d-sm-none mt-3">
         {navLinks.map((each: iNavLink, i: any) =>
@@ -118,6 +100,7 @@ const CenteredNavbar = ({
             )
           ) : (
             <NavCatergoryDD
+              key={i}
               label={each.label}
               openDD={openDD}
               setOpenDD={() => setOpenDD(!openDD)}

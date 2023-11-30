@@ -41,21 +41,22 @@ const NavCatergoryDD = ({
           <LinkTo href={"/blog"} passHref className="block text-sm py-2 px-2">
             <span onClick={() => setOpenDD(!openDD)}>All Articles</span>
           </LinkTo>
-          {CATEGORIES && CATEGORIES.map((each) => (
-            <LinkTo
-              href={"/blog?category=" + each}
-              key={each}
-              passHref
-              className="block text-sm py-2 px-2 border-t border-gray-400"
-            >
-              <span
-                style={{ textTransform: "capitalize" }}
-                onClick={() => setOpenDD(!openDD)}
+          {CATEGORIES &&
+            CATEGORIES.map((each) => (
+              <LinkTo
+                href={"/blog?category=" + each}
+                key={each}
+                passHref
+                className="block text-sm py-2 px-2 border-t border-gray-400"
               >
-                {each}
-              </span>
-            </LinkTo>
-          ))}
+                <span
+                  style={{ textTransform: "capitalize" }}
+                  onClick={() => setOpenDD(!openDD)}
+                >
+                  {each}
+                </span>
+              </LinkTo>
+            ))}
         </div>
       </div>
     </>
