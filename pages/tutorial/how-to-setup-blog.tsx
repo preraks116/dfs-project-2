@@ -3,14 +3,23 @@ import { ImageSize, TextAlign, ListType } from "../../src/shared/enums";
 import { PageLayout, Text, List, Image, LinkTo, Seperator, Slider } from "../../src/components";
 import CodeBlock from "../../src/components/CodeBlock";
 import { AuthorSetup, NavbarSetup, NavbarSetupType, NavbarSetup_NAVLINKS, NavbarSetup_Socials } from "../../src/constants/codeBlocks";
+import Link from "next/link";
 
 const BlogSetup = () => {
     return (
         <PageLayout home>
             <div className='container px-3 pb-[20px] md:mt-[50px] pt-20 md:pt-0'>
-                <Text title className="text-3xl">
-                    Blog Setup
-                </Text>
+
+                <div className='flex align-left mt-5 flex-wrap '>
+                    <Text title className="text-3xl">
+                        Blog Setup
+                    </Text>
+                    <LinkTo href="http://127.0.0.1:5500/viewer3.html" passHref className='flex items-center justify-center rounded-md bg-blue-600 px-3 pb-3 my-2 text-white hover:text-white shadow-lg hover:shadow-none transition-all mb-2 md:mx-5 mx-3'>
+                        <span className='text-xl pt-2 block'>View Slide</span>
+                    </LinkTo>
+                </div>
+
+                {/* Add a button */}
                 <hr className="mt-5" />
                 <Text subtitle className="mt-10">
                     1.  Installing Node, VS Code and downloading the project on your computer.

@@ -1,4 +1,6 @@
 import '../src/styles/globals.scss'
+import '../src/styles/pma.ui.css'
+import '../src/styles/viewer.css'
 
 import type { AppProps } from 'next/app'
 import Head from 'next/head'

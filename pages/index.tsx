@@ -5,6 +5,9 @@ import { SORTED_ARTICLES_BY_DATE } from '../BLOG_CONSTANTS/_ARTICLES_LIST';
 import { DEFAULT_SEO } from "../BLOG_CONSTANTS/_BLOG_SETUP";
 import FeaturedArticleSection from "../src/components/Misc/FeaturedArticleSection";
 import HomeNonFeatureArticles from "../src/components/Misc/HomeNonFeatureAricles";
+import Link from 'next/link';
+import Viewer from '../src/components/viewer/viewer';
+
 
 const Home = () => {
   return (
@@ -44,8 +47,68 @@ const Home = () => {
           <HomeNonFeatureArticles />
         </div>
       </div>
+      <div>
+    </div>
     </PageLayout>
   )
 }
 
 export default Home
+
+// // pages/index.js
+// // pages/index.js
+// import React, { useEffect } from 'react';
+// // import PMA from @pathomation/viewer;
+
+// // import PMA from public/pma
+
+// import path from 'path';
+// // import handler from './api/viewer';
+
+// const Home = () => {
+
+//   // useEffect(() => {
+//   //   handler();
+//   // });
+
+//   useEffect(() => {
+//     var serverUrl = "https://host.pathomation.com/pma.core.2/";
+//     var serverUsername = "PMA_UI_demo";
+//     var serverPassword = "PMA_UI_demo";
+//     var imagePath = "Reference/3DHistech/CMU-1.mrxs";
+//     var viewerElementSelector = "#viewer";
+//     var caller = "DemoPortal";
+
+
+//     // Initialize the viewport
+//     new PMA.UI.View.Viewport(
+//         // Viewport parameters
+//         {
+//             caller: caller,
+//             element: viewerElementSelector,
+//             image: imagePath,
+//             serverUrls: [serverUrl],
+//             username: serverUsername,
+//             password: serverPassword,
+//             digitalZoomLevels: 2,
+//         },
+//         // Success callback function
+//         function () {
+//             console.log("Success! Viewport initialized successfully.");
+//         },
+//         // Failure callback function
+//         function () {
+//             console.log("Error! Viewport failed to initialize properly.");
+//         }
+//     );
+//   }, []);
+
+
+//   return (
+//     <div>
+//       <div id="viewer"></div>
+//     </div>
+//   );
+// };
+
+// export default Home;  
