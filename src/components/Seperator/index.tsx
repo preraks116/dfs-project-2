@@ -13,7 +13,7 @@ const Seperator = ({ line = false, dots = false }: iProps) => {
         <div
           className={combineClasses(
             classes.section_seperator_line,
-            "dark:border-white border-black"
+            "dark:border-white border-black",
           )}
         ></div>
       ) : dots ? (
@@ -26,7 +26,7 @@ const Seperator = ({ line = false, dots = false }: iProps) => {
         <div
           className={combineClasses(
             classes.section_seperator_line,
-            "dark:border-white border-black"
+            "dark:border-white border-black",
           )}
         ></div>
       )}

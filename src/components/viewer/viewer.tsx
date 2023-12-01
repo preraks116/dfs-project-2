@@ -1,13 +1,11 @@
-import React from 'react';
-import Head from 'next/head';
-import Script from 'next/script';
+import React from "react";
+import Head from "next/head";
+import Script from "next/script";
 import { Helmet } from "react-helmet";
 
 // import from react-load-script
 
-
 const Viewer: React.FC = () => {
-  
   return (
     <>
       <div>
@@ -15,9 +13,7 @@ const Viewer: React.FC = () => {
         <Script src="/public/pma.ui.js" />
         <Script src="/public/viewer.js" />
       </div>
-      <div id="viewer">
-        hi
-      </div>
+      <div id="viewer">hi</div>
     </>
   );
 };

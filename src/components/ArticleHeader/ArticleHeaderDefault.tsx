@@ -20,7 +20,7 @@ const ArticleHeaderDefault = ({ headerData }: IProps) => {
             <p
               className={combineClasses(
                 classes.article_header_author_name,
-                "font-medium my-0"
+                "font-medium my-0",
               )}
             >
               {headerData.author.name}

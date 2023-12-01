@@ -27,7 +27,7 @@ const SimpleNavbar = ({
       className={combineClasses(
         classes.navbar__container,
         "container flex items-center justify-between",
-        "px-2"
+        "px-2",
       )}
     >
       <div className="flex items-center">
@@ -35,7 +35,7 @@ const SimpleNavbar = ({
           className={combineClasses(
             classes.mobileBurgerToggle,
             "mr-5",
-            openSidebar ? classes.mobileBurgerToggle__close : " "
+            openSidebar ? classes.mobileBurgerToggle__close : " ",
           )}
           onClick={() => toggleSideMenu()}
         >
@@ -90,14 +90,14 @@ const SimpleNavbar = ({
                 setOpenDD={() => setOpenDD(!openDD)}
                 floating
               />
-            )
+            ),
           )}
         </div>
 
         <div
           className={combineClasses(
             classes.search_icon_wrapper,
-            "ml-5 dark:text-white"
+            "ml-5 dark:text-white",
           )}
           onClick={() => openSearch()}
         >
@@ -117,7 +117,7 @@ const SimpleNavbar = ({
           aria-label="theme button"
           className={combineClasses(
             classes.theme_switch,
-            "pl-3 dark:text-white text-black"
+            "pl-3 dark:text-white text-black",
           )}
           onClick={changeTheme}
         >

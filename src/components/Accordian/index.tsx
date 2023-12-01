@@ -29,14 +29,14 @@ const Accordian = ({
         <AiFillCaretRight
           className={combineClasses(
             "md:text-[30px] text-[25px] md:pt-0 pt-1 transition-transform text-blue-500 dark:text-white ml-3 shrink-0",
-            open ? "-rotate-90" : "rotate-90"
+            open ? "-rotate-90" : "rotate-90",
           )}
         />
       </h3>
       <div
         className={combineClasses(
           "md:text-[18px] text-[16px]  text-slate-700 dark:text-slate-300 font-regular overflow-hidden transition-all w-full ring-blue-200 rounded px-3",
-          open ? "max-h-[300px] my-3 ring-1 p-2 " : "max-h-[0px]"
+          open ? "max-h-[300px] my-3 ring-1 p-2 " : "max-h-[0px]",
         )}
       >
         {children}

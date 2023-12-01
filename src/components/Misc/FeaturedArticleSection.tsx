@@ -6,7 +6,7 @@ import Text from "../Text";
 
 const FeaturedArticleSection = () => {
   const featureArticles = SORTED_ARTICLES_BY_DATE.filter(
-    (article: iArticle) => article.featureArticle === true
+    (article: iArticle) => article.featureArticle === true,
   );
   return featureArticles.length ? (
     <>

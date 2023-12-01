@@ -49,7 +49,7 @@ const NavSidebar = ({
         className={combineClasses(
           classes.nav_sidebar_wrapper,
           openSidebar && classes.open,
-          "dark:bg-slate-900 dark:text-white bg-white text-black"
+          "dark:bg-slate-900 dark:text-white bg-white text-black",
         )}
       >
         <div
@@ -92,7 +92,7 @@ const NavSidebar = ({
                 openDD={openDD}
                 setOpenDD={() => setOpenDD(!openDD)}
               />
-            )
+            ),
           )}
           {env === "development" ? (
             <>
@@ -176,7 +176,7 @@ const NavSidebar = ({
             aria-label="theme-switch"
             className={combineClasses(
               classes.theme_switch,
-              "dark:text-white text-black"
+              "dark:text-white text-black",
             )}
             onClick={() => changeTheme()}
           >

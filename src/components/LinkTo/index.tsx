@@ -34,7 +34,7 @@ const LinkTo = ({
           <a
             className={combineClasses(
               "cursor-pointer hover:text-blue-500",
-              className
+              className,
             )}
           >
             {children}

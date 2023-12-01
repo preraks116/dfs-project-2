@@ -26,7 +26,7 @@ export const changeTheme = (): void => {
   const lsTheme = localStorage.getItem("theme");
   localStorage.setItem(
     "theme",
-    lsTheme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT
+    lsTheme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT,
   );
 
   if (
@@ -53,7 +53,7 @@ export const getDeviceType = (): string => {
   }
   if (
     /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
-      ua
+      ua,
     )
   ) {
     return "mobile";

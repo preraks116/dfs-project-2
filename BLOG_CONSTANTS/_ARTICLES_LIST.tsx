@@ -213,5 +213,5 @@ export const ARTICLES_LIST: iArticle[] = [
 ];
 
 export const SORTED_ARTICLES_BY_DATE = ARTICLES_LIST.sort((a, b) =>
-  new Date(a.preview.date) > new Date(b.preview.date) ? -1 : 1
+  new Date(a.preview.date) > new Date(b.preview.date) ? -1 : 1,
 );

@@ -33,7 +33,7 @@ const Text = ({
         <h1
           className={combineClasses(
             `font-bold text-3xl md:text-4xl my-[10px]`,
-            className
+            className,
           )}
           style={{ color: color, textAlign: textAlign }}
           id={id}
@@ -46,7 +46,7 @@ const Text = ({
         <h2
           className={combineClasses(
             `font-semibold text-xl md:text-2xl my-[10px]`,
-            className
+            className,
           )}
           style={{ color: color, textAlign: textAlign }}
           id={id}
@@ -59,7 +59,7 @@ const Text = ({
         <p
           className={combineClasses(
             `font-regular mb-3 text-lg leading-relaxed`,
-            className
+            className,
           )}
           style={{ color: color, textAlign: textAlign }}
           id={id}
@@ -82,7 +82,7 @@ const Text = ({
         <p
           className={combineClasses(
             `font-regular mb-3 text-lg leading-relaxed`,
-            className
+            className,
           )}
           style={{ color: color, textAlign: textAlign }}
           id={id}

@@ -11,7 +11,7 @@ const ArticleTags = ({
     <div
       className={combineClasses(
         "md:mt-2 flex flex-wrap",
-        center && "justify-center"
+        center && "justify-center",
       )}
     >
       {tags.split(",").map((each, i) => (

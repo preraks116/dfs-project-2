@@ -34,7 +34,7 @@ const ArticleCard = ({ article, path }: IProp) => {
         passHref
         className={combineClasses(
           classes.article_card,
-          "border-b-[5px] border-blue-500 dark:bg-slate-800 dark:text-white dark:drop-shadow-lg flex flex-col justify-between"
+          "border-b-[5px] border-blue-500 dark:bg-slate-800 dark:text-white dark:drop-shadow-lg flex flex-col justify-between",
         )}
       >
         <div>
@@ -65,7 +65,7 @@ const ArticleCard = ({ article, path }: IProp) => {
             <p
               className={combineClasses(
                 classes.article_card__intro,
-                "text-sm font-normal mt-2 md:mt-1"
+                "text-sm font-normal mt-2 md:mt-1",
               )}
             >
               {article.shortIntro.slice(0, 100)} ...
@@ -76,7 +76,7 @@ const ArticleCard = ({ article, path }: IProp) => {
         <div
           className={combineClasses(
             classes.article_card_footer,
-            "mt-4 mb-3 flex items-center px-3"
+            "mt-4 mb-3 flex items-center px-3",
           )}
         >
           <div className={"flex items-center"}>
@@ -89,7 +89,7 @@ const ArticleCard = ({ article, path }: IProp) => {
               passHref
               className={combineClasses(
                 classes.author_name,
-                "text-sm font-medium"
+                "text-sm font-medium",
               )}
             >
               {article.author.name}

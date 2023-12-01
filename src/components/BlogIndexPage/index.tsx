@@ -16,10 +16,10 @@ const BlogIndexPage = ({
   const router = useRouter();
   const { category, author } = router.query;
   const categoryArticles = SORTED_ARTICLES_BY_DATE.filter(
-    (each) => each.preview.category === category
+    (each) => each.preview.category === category,
   );
   const authorArticles = SORTED_ARTICLES_BY_DATE.filter(
-    (each) => each.preview.author.name === author
+    (each) => each.preview.author.name === author,
   );
 
   const [ARTICLES, setARTICLES] = useState(SORTED_ARTICLES_BY_DATE);
@@ -29,8 +29,8 @@ const BlogIndexPage = ({
       category
         ? categoryArticles
         : author
-        ? authorArticles
-        : SORTED_ARTICLES_BY_DATE
+          ? authorArticles
+          : SORTED_ARTICLES_BY_DATE,
     );
   }, [category, author]);
 
@@ -54,7 +54,7 @@ const BlogIndexPage = ({
       <div
         className={combineClasses(
           "container mt-10 md:pt-0 px-0 md:px-3",
-          category ? "pt-10" : "pt-14"
+          category ? "pt-10" : "pt-14",
         )}
       >
         {category || author ? (
