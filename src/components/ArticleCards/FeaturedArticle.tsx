@@ -1,4 +1,4 @@
-import { IArticleHeaderData } from "../../shared/interfaces";
+import { ICaseHeaderData } from "../../shared/interfaces";
 import classes from "./ArticleCard.module.scss";
 import {
   combineClasses,
@@ -11,7 +11,7 @@ import ArticleCardCategory from "../Misc/ArticleCardCategory";
 import ArticleTags from "../Misc/ArticleTags";
 
 interface IProp {
-  article: IArticleHeaderData;
+  article: ICaseHeaderData;
   path: string;
 }
 
@@ -21,7 +21,7 @@ const FeaturedArticle = ({ article, path }: IProp) => {
       <div
         className={combineClasses(
           classes.featured_article,
-          "md:border-l-[5px] border-b-[5px] md:border-b-0 border-blue-500 dark:bg-slate-800 dark:text-white dark:drop-shadow-lg cursor-pointer",
+          "md:border-l-[5px] border-b-[5px] md:border-b-0 border-blue-500 dark:bg-slate-800 dark:text-white dark:drop-shadow-lg cursor-pointer"
         )}
       >
         <div
@@ -40,7 +40,7 @@ const FeaturedArticle = ({ article, path }: IProp) => {
                 passHref
                 className={combineClasses(
                   classes.author_name,
-                  "text-[14px] md:text-[16px] my-0 font-medium",
+                  "text-[14px] md:text-[16px] my-0 font-medium"
                 )}
               >
                 {article.author.name}
@@ -55,16 +55,16 @@ const FeaturedArticle = ({ article, path }: IProp) => {
             <h1
               className={combineClasses(
                 classes.featured_article__title,
-                "text-[24px] font-bold mt-0 mb-[10px]",
+                "text-[24px] font-bold mt-0 mb-[10px]"
               )}
             >
-              {article.articleTitle}
+              {article.title}
             </h1>
           </LinkTo>
           <p
             className={combineClasses(
               classes.featured_article__intro,
-              "text-[14px] font-regular mt-0 mb-[10px]",
+              "text-[14px] font-regular mt-0 mb-[10px]"
             )}
           >
             {article.shortIntro.slice(0, 150)} ...
@@ -73,7 +73,7 @@ const FeaturedArticle = ({ article, path }: IProp) => {
           <p
             className={combineClasses(
               classes.featured_article__date,
-              "font-normal text-xs pt-3 mb-0",
+              "font-normal text-xs pt-3 mb-0"
             )}
           >
             {article.date}
@@ -82,13 +82,13 @@ const FeaturedArticle = ({ article, path }: IProp) => {
         <div
           className={combineClasses(
             classes.featured_article__image,
-            "rounded-sm overflow-hidden",
+            "rounded-sm overflow-hidden"
           )}
         >
           {/* style={{ background: `url(${transformImagePaths(article.thumbnail)})` }} */}
           <img
             src={transformImagePaths(article.thumbnail)}
-            alt={article.articleTitle}
+            alt={article.title}
             className="w-full h-full object-cover"
           />
         </div>

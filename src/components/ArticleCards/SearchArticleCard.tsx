@@ -1,4 +1,4 @@
-import { IArticleHeaderData } from "../../shared/interfaces";
+import { ICaseHeaderData } from "../../shared/interfaces";
 import { combineClasses } from "../../utils/utils";
 import LinkTo from "../LinkTo";
 import ArticleCardCategory from "../Misc/ArticleCardCategory";
@@ -10,7 +10,7 @@ const SerachArticleCard = ({
   article,
   path,
 }: {
-  article: IArticleHeaderData;
+  article: ICaseHeaderData;
   path: string;
 }) => (
   <div className="w-full lg:w-1/3 md:w-1/2 px-3 mb-10">
@@ -18,13 +18,13 @@ const SerachArticleCard = ({
       <div
         className={combineClasses(
           classes.article_card,
-          "px-[15px] py-[10px] border-b-[5px] border-blue-600 dark:bg-slate-800 dark:text-white bg-white text-black drop-shadow-lg",
+          "px-[15px] py-[10px] border-b-[5px] border-blue-600 dark:bg-slate-800 dark:text-white bg-white text-black drop-shadow-lg"
         )}
       >
         <p
           className={combineClasses(
             classes.article_card__date,
-            "font-medium text-xs mt-3 mb-2",
+            "font-medium text-xs mt-3 mb-2"
           )}
         >
           {article.date}
@@ -33,10 +33,10 @@ const SerachArticleCard = ({
           <h1
             className={combineClasses(
               classes.article_card__title,
-              "text-[22px] font-bold my-0",
+              "text-[22px] font-bold my-0"
             )}
           >
-            {article.articleTitle}
+            {article.title}
           </h1>
         </LinkTo>
         <ArticleTags tags={article.tags} />
@@ -51,7 +51,7 @@ const SerachArticleCard = ({
               passHref
               className={combineClasses(
                 classes.author_name,
-                "text-sm font-medium",
+                "text-sm font-medium"
               )}
             >
               {article.author.name}

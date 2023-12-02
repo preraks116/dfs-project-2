@@ -1,11 +1,11 @@
-import { SORTED_ARTICLES_BY_DATE } from "../../../BLOG_CONSTANTS/_ARTICLES_LIST";
-import { iArticle } from "../../shared/interfaces";
-import ArticleCard from "../ArticleCards/ArticleCard";
+import { SORTED_ARTICLES_BY_DATE } from "../../../BLOG_CONSTANTS/_CASES_LIST";
+import { ICase } from "../../shared/interfaces";
+import CaseCard from "../ArticleCards/ArticleCard";
 import LinkTo from "../LinkTo";
 
 const HomeNonFeatureArticles = () => {
   const restArticles = SORTED_ARTICLES_BY_DATE.filter(
-    (article: iArticle) => !article.featureArticle,
+    (article: ICase) => !article.featureArticle
   );
   const articlesToDisplay = 9;
   return (
@@ -14,8 +14,8 @@ const HomeNonFeatureArticles = () => {
         ? restArticles
             .slice(0, articlesToDisplay)
             .map((each, i) => (
-              <ArticleCard
-                article={each.preview}
+              <CaseCard
+                preview={each.preview}
                 path={each.path}
                 key={each.path + i}
               />

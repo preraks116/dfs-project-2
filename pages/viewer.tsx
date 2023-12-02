@@ -1,4 +1,4 @@
-import Viewer from "../src/components/viewer/viewer";
+import Viewer from "../src/components/Viewer/viewer";
 
 const ViewerPage: React.FC = () => {
   return <Viewer />;

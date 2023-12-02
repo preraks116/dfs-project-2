@@ -12,12 +12,12 @@ import { useTheme } from "next-themes";
 import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 import { MdOutlineClose } from "react-icons/md";
 import NavCatergoryDD from "../Misc/NavCategoryDD";
-import { iNavLink, iNavSetup, iNavSocials } from "../../shared/interfaces";
+import { INavLink, INavSetup, INavSocials } from "../../shared/interfaces";
 
 interface IProps {
   openSidebar: boolean;
   closeNavSidebar: () => void;
-  navSetup: iNavSetup;
+  navSetup: INavSetup;
   changeTheme: () => void;
 }
 
@@ -49,7 +49,7 @@ const NavSidebar = ({
         className={combineClasses(
           classes.nav_sidebar_wrapper,
           openSidebar && classes.open,
-          "dark:bg-slate-900 dark:text-white bg-white text-black",
+          "dark:bg-slate-900 dark:text-white bg-white text-black"
         )}
       >
         <div
@@ -63,7 +63,7 @@ const NavSidebar = ({
         </div>
         <hr />
         <div className="my-15">
-          {navSetup.sideNavLinks.map((each: iNavLink, i: any) =>
+          {navSetup.sideNavLinks.map((each: INavLink, i: any) =>
             each.type !== "dropdown" ? (
               !each.newTab ? (
                 <LinkTo
@@ -92,7 +92,7 @@ const NavSidebar = ({
                 openDD={openDD}
                 setOpenDD={() => setOpenDD(!openDD)}
               />
-            ),
+            )
           )}
           {env === "development" ? (
             <>
@@ -176,7 +176,7 @@ const NavSidebar = ({
             aria-label="theme-switch"
             className={combineClasses(
               classes.theme_switch,
-              "dark:text-white text-black",
+              "dark:text-white text-black"
             )}
             onClick={() => changeTheme()}
           >

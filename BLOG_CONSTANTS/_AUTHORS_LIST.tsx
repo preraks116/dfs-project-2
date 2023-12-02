@@ -1,27 +1,6 @@
 import { IAuthor } from "../src/shared/interfaces";
 import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 
-/**
- * EXAMPLE AUTHOR
- * 
-  AUTHOR_NAME: IAuthor = {
-    name: "Full Name",
-    designation: "Work Designation",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    profilePic: "",
-     social: [
-        {
-            icon: <AiFillGithub />,
-            link: 'https://github.com/'
-        },
-        {
-            icon: <AiFillLinkedin />,
-            link: 'https://www.linkedin.com/'
-        },
-    ]
-}
- */
-
 export const AUTHORS: { [key: string]: IAuthor } = {
   JOHN: {
     name: "Dr. John Smith",

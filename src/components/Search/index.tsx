@@ -2,7 +2,7 @@ import { useState } from "react";
 import { combineClasses } from "../../utils/utils";
 import classes from "./Search.module.scss";
 import SearchArticleCard from "../ArticleCards/SearchArticleCard";
-import { SORTED_ARTICLES_BY_DATE } from "../../../BLOG_CONSTANTS/_ARTICLES_LIST";
+import { SORTED_ARTICLES_BY_DATE } from "../../../BLOG_CONSTANTS/_CASES_LIST";
 import { MdOutlineClose } from "react-icons/md";
 
 interface ISearch {
@@ -19,8 +19,8 @@ const Search = ({ closeSearch }: ISearch) => {
           .split(",")
           .join()
           .indexOf(searchStr.toLocaleLowerCase()) >= 0 ||
-        article.preview.articleTitle.indexOf(searchStr.toLocaleLowerCase()) >=
-          0,
+        article.preview.title.indexOf(searchStr.toLocaleLowerCase()) >= 0 ||
+        article.preview.category.indexOf(searchStr.toLocaleLowerCase()) >= 0
     );
     setSearchResults(results);
   };
@@ -29,7 +29,7 @@ const Search = ({ closeSearch }: ISearch) => {
     <div
       className={combineClasses(
         "bg-slate-100 text-black dark:bg-slate-900 dark:text-white",
-        classes?.search_container,
+        classes?.search_container
       )}
     >
       <div className="container mx-auto">

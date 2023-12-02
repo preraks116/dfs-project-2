@@ -6,7 +6,7 @@ import LinkTo from "../LinkTo";
 import { useTheme } from "next-themes";
 import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import NavCatergoryDD from "../Misc/NavCategoryDD";
-import { iNavLink, iNavSocials, iNavbar } from "../../shared/interfaces";
+import { INavLink, INavSocials, INavbar } from "../../shared/interfaces";
 import { BsFillShareFill } from "react-icons/bs";
 
 const CenteredNavbar = ({
@@ -15,7 +15,7 @@ const CenteredNavbar = ({
   openSidebar = false,
   navSetup,
   onShareClick,
-}: iNavbar) => {
+}: INavbar) => {
   const { navLinks, logo } = navSetup;
 
   const [openDD, setOpenDD] = useState(false);
@@ -29,7 +29,7 @@ const CenteredNavbar = ({
             className={combineClasses(
               classes.mobileBurgerToggle,
               "mr-3",
-              openSidebar ? classes.mobileBurgerToggle__close : " ",
+              openSidebar ? classes.mobileBurgerToggle__close : " "
             )}
             onClick={() => toggleSideMenu()}
           >
@@ -76,7 +76,7 @@ const CenteredNavbar = ({
         </LinkTo>
       </div>
       <div className="flex justify-center items-center font-regular text-[14px] d-sm-none mt-3">
-        {navLinks.map((each: iNavLink, i: any) =>
+        {navLinks.map((each: INavLink, i: any) =>
           each.type !== "dropdown" ? (
             !each.newTab ? (
               <LinkTo
@@ -106,7 +106,7 @@ const CenteredNavbar = ({
               setOpenDD={() => setOpenDD(!openDD)}
               floating
             />
-          ),
+          )
         )}
       </div>
     </div>

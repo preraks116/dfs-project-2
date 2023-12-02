@@ -1,9 +1,9 @@
-import { iEbook } from "../src/shared/interfaces";
+import { IEbook } from "../src/shared/interfaces";
 import { AUTHORS } from "./_AUTHORS_LIST";
 
-export const EBOOKS_LIST: iEbook[] = [
+export const EBOOKS_LIST: IEbook[] = [
   {
-    path: "/pages/blog/ebook-1-cancerous-insights",
+    path: "/pages/ebooks/ebook-1-cancerous-insights",
     header: {
       title: "Cancerous Insights",
       date: "Mar-22-2022",
@@ -13,7 +13,7 @@ export const EBOOKS_LIST: iEbook[] = [
     },
   },
   {
-    path: "/pages/blog/ebook-2-cancer-chronicles",
+    path: "/pages/ebooks/ebook-2-cancer-chronicles",
     header: {
       title: "Cancer Chronicles",
       date: "Mar-22-2022",
@@ -25,5 +25,5 @@ export const EBOOKS_LIST: iEbook[] = [
 ];
 
 export const SORTED_EBOOKS_BY_DATE = EBOOKS_LIST.sort((a, b) =>
-  new Date(a.header.date) > new Date(b.header.date) ? -1 : 1,
+  new Date(a.header.date) > new Date(b.header.date) ? -1 : 1
 );

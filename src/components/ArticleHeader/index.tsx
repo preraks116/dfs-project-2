@@ -1,10 +1,10 @@
-import { iArticle } from "../../shared/interfaces";
+import { ICase } from "../../shared/interfaces";
 import ArticleHeaderCenter from "./ArticleHeaderCentered";
 import ArticleHeaderDefault from "./ArticleHeaderDefault";
 
 interface IArticleHeader {
   centered?: boolean;
-  ARTICLE_DETAILS: iArticle;
+  ARTICLE_DETAILS: ICase;
 }
 const ArticleHeader = ({
   centered = false,

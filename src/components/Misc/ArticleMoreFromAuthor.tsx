@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { iArticle, IAuthor } from "../../shared/interfaces";
+import { ICase, IAuthor } from "../../shared/interfaces";
 import {
   combineClasses,
   isDesktopDevice,
@@ -16,7 +16,7 @@ const ArticleMoreFromAuthor = ({
   articleGrid = false,
 }: {
   author: IAuthor;
-  relatedArticles: iArticle[];
+  relatedArticles: ICase[];
   articleGrid?: boolean;
 }) => {
   const wrapperClasses =
@@ -69,7 +69,7 @@ const ArticleMoreFromAuthor = ({
                 <div
                   className={combineClasses(
                     "mb-3 cursor-pointer",
-                    articleGrid ? "lg:w-1/3 md:w-1/2 w-full md:pr-2" : "w-full",
+                    articleGrid ? "lg:w-1/3 md:w-1/2 w-full md:pr-2" : "w-full"
                   )}
                   key={each.path}
                 >
@@ -85,11 +85,11 @@ const ArticleMoreFromAuthor = ({
                       <img
                         src={transformImagePaths(each.preview.thumbnail)}
                         className="w-[120px] h-[70px] mr-2 object-cover"
-                        alt={each.preview.articleTitle}
+                        alt={each.preview.title}
                       />
                     </div>
                     <div className="pr-1 text-[16px] hover:text-blue-500 font-semibold">
-                      {each.preview.articleTitle}
+                      {each.preview.title}
                     </div>
                   </div>
                 </div>

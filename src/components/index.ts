@@ -7,5 +7,3 @@ export const Seperator = dynamic(() => import("./Seperator"));
 export const List = dynamic(() => import("./List"));
 export const LinkTo = dynamic(() => import("./LinkTo"));
 export const Slider = dynamic(() => import("./Slider"));
-export const Accordian = dynamic(() => import("./Accordian"));
-export const VideoPlayer = dynamic(() => import("./Video"));

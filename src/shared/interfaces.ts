@@ -5,27 +5,26 @@ export interface IAuthor {
   name: string;
   designation?: string;
   bio?: string;
-  social?: iNavSocials[];
+  social?: INavSocials[];
 }
 
-export interface IArticleHeaderData {
+export interface ICaseHeaderData {
   author: IAuthor;
   date: string;
-  articleTitle: string;
+  title: string;
   tags: string;
   thumbnail: string;
   shortIntro: string;
-  category?: string;
+  category: string;
 }
 
-export interface iArticle {
+export interface ICase {
   path: string;
   featureArticle?: boolean;
-  preview: IArticleHeaderData;
-  seo?: iSEO;
+  preview: ICaseHeaderData;
 }
 
-export interface iEbookHeaderData {
+export interface IEbookHeaderData {
   title: string;
   date: string;
   author: IAuthor;
@@ -33,51 +32,41 @@ export interface iEbookHeaderData {
   category: string;
 }
 
-export interface iEbook {
+export interface IEbook {
   path: string;
-  header: iEbookHeaderData;
+  header: IEbookHeaderData;
 }
 
-export interface iSEO {
-  title?: string;
-  description?: string;
-  keywords?: string;
-  ogImage?: string;
-  twitterHandle?: string;
-  author?: string;
-  url?: string;
-}
-
-export interface iNavbar {
+export interface INavbar {
   openSearch: () => void;
   toggleSideMenu: () => void;
   changeTheme?: () => void;
   openSidebar: boolean;
-  navSetup: iNavSetup;
+  navSetup: INavSetup;
   onShareClick: () => void;
 }
 
-export interface iNavSetup {
+export interface INavSetup {
   type: NavbarType;
-  navLinks: iNavLink[];
-  sideNavLinks: iNavLink[];
-  logo: iNavLogo;
+  navLinks: INavLink[];
+  sideNavLinks: INavLink[];
+  logo: INavLogo;
 }
 
-export interface iNavLogo {
+export interface INavLogo {
   type: LogoType;
   logo: string;
   logoLight?: string;
 }
 
-export interface iNavLink {
+export interface INavLink {
   label: string;
   path: string;
   type?: string;
   newTab?: boolean;
 }
 
-export interface iNavSocials {
+export interface INavSocials {
   link: string;
   icon: any;
 }

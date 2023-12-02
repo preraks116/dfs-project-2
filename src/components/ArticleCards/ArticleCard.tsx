@@ -1,5 +1,5 @@
 import LinkTo from "../LinkTo";
-import { IArticleHeaderData } from "../../shared/interfaces";
+import { ICaseHeaderData } from "../../shared/interfaces";
 import {
   combineClasses,
   transformImagePaths,
@@ -12,12 +12,11 @@ import ArticleTags from "../Misc/ArticleTags";
 import Image from "next/image";
 
 interface IProp {
-  article: IArticleHeaderData;
+  preview: ICaseHeaderData;
   path: string;
 }
 
-const ArticleCard = ({ article, path }: IProp) => {
-  // set url and path
+const CaseCard = ({ preview, path }: IProp) => {
   const origin =
     typeof window !== "undefined" && window.location.origin
       ? window.location.origin
@@ -34,14 +33,14 @@ const ArticleCard = ({ article, path }: IProp) => {
         passHref
         className={combineClasses(
           classes.article_card,
-          "border-b-[5px] border-blue-500 dark:bg-slate-800 dark:text-white dark:drop-shadow-lg flex flex-col justify-between",
+          "border-b-[5px] border-blue-500 dark:bg-slate-800 dark:text-white dark:drop-shadow-lg flex flex-col justify-between"
         )}
       >
         <div>
           <div className={"rounded-t-[4px] overflow-hidden h-[200px] relative"}>
             <Image
-              src={transformImagePaths(article.thumbnail)}
-              alt={article.articleTitle}
+              src={transformImagePaths(preview.thumbnail)}
+              alt={preview.title}
               layout="fill"
               quality={100}
               objectFit="cover"
@@ -51,7 +50,7 @@ const ArticleCard = ({ article, path }: IProp) => {
 
           <div className={"d-block px-[15px] py-0"}>
             <p className={"font-normal text-xs pt-3 mb-0 md:mb-3"}>
-              {article.date}
+              {preview.date}
             </p>
             <LinkTo href={transformPath(path)} passHref>
               <h1
@@ -59,50 +58,47 @@ const ArticleCard = ({ article, path }: IProp) => {
                   "text-[22px] font-bold cursor-pointer tracking-wide hover:text-blue-600"
                 }
               >
-                {article.articleTitle}
+                {preview.title}
               </h1>
             </LinkTo>
             <p
               className={combineClasses(
                 classes.article_card__intro,
-                "text-sm font-normal mt-2 md:mt-1",
+                "text-sm font-normal mt-2 md:mt-1"
               )}
             >
-              {article.shortIntro.slice(0, 100)} ...
+              {preview.shortIntro.slice(0, 100)} ...
             </p>
-            <ArticleTags tags={article.tags} />
+            <ArticleTags tags={preview.tags} />
           </div>
         </div>
         <div
           className={combineClasses(
             classes.article_card_footer,
-            "mt-4 mb-3 flex items-center px-3",
+            "mt-4 mb-3 flex items-center px-3"
           )}
         >
           <div className={"flex items-center"}>
             <Avatar
-              author={article.author}
+              author={preview.author}
               className="w-[40px] h-[40px] mr-3 text-xl"
             />
             <LinkTo
-              href={"/blog?author=" + article.author.name}
+              href={"/blog?author=" + preview.author.name}
               passHref
               className={combineClasses(
                 classes.author_name,
-                "text-sm font-medium",
+                "text-sm font-medium"
               )}
             >
-              {article.author.name}
+              {preview.author.name}
             </LinkTo>
-            {/* <p className={combineClasses(classes.author_name, 'text-sm font-medium')}>
-              {article.author.name}
-            </p> */}
           </div>
-          <ArticleCardCategory category={article.category} />
+          <ArticleCardCategory category={preview.category} />
         </div>
       </LinkTo>
     </div>
   );
 };
 
-export default ArticleCard;
+export default CaseCard;

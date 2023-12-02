@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { IArticleHeaderData } from "../../shared/interfaces";
+import { ICaseHeaderData } from "../../shared/interfaces";
 import { combineClasses } from "../../utils/utils";
 import ArticleTags from "../Misc/ArticleTags";
 import classes from "./ArticleHeader.module.scss";
+
 interface IProps {
-  headerData: IArticleHeaderData;
+  headerData: ICaseHeaderData;
 }
 const ArticleHeaderCenter = ({ headerData }: IProps) => {
   return (
@@ -12,15 +13,15 @@ const ArticleHeaderCenter = ({ headerData }: IProps) => {
       <h1
         className={combineClasses(
           classes.articleTitle,
-          "text-center text-2xl md:text-4xl font-medium mt-[20px] mb-[5px]",
+          "text-center text-2xl md:text-4xl font-medium mt-[20px] mb-[5px]"
         )}
       >
-        {headerData.articleTitle}
+        {headerData.title}
       </h1>
       <div
         className={combineClasses(
           "mb-[10px] mt-[15px] text-[14px] font-medium",
-          classes.centered_article_header_author,
+          classes.centered_article_header_author
         )}
       >
         <p className={"my-0 mx-[30px] font-medium"}>

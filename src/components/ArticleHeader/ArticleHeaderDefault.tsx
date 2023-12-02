@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { IArticleHeaderData } from "../../shared/interfaces";
+import { ICaseHeaderData } from "../../shared/interfaces";
 import { combineClasses } from "../../utils/utils";
 import ArticleTags from "../Misc/ArticleTags";
 import Avatar from "../Misc/Avatar";
 import classes from "./ArticleHeader.module.scss";
+
 interface IProps {
-  headerData: IArticleHeaderData;
+  headerData: ICaseHeaderData;
 }
 const ArticleHeaderDefault = ({ headerData }: IProps) => {
   return (
@@ -20,7 +21,7 @@ const ArticleHeaderDefault = ({ headerData }: IProps) => {
             <p
               className={combineClasses(
                 classes.article_header_author_name,
-                "font-medium my-0",
+                "font-medium my-0"
               )}
             >
               {headerData.author.name}
@@ -45,7 +46,7 @@ const ArticleHeaderDefault = ({ headerData }: IProps) => {
         </div>
       </div>
       <h1 className="text-2xl md:text-4xl font-semibold mt-[20px] mb-[5px]">
-        {headerData.articleTitle}
+        {headerData.title}
       </h1>
       <ArticleTags tags={headerData.tags} />
     </div>

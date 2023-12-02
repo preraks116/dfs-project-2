@@ -11,7 +11,7 @@ import {
 } from "../../utils/utils";
 import NavSidebar from "./NavSideBar";
 import Search from "../Search";
-import { PRIMARY_NAV } from "../../../BLOG_CONSTANTS/_BLOG_SETUP";
+import { PRIMARY_NAV } from "../../../BLOG_CONSTANTS/_APP_SETUP";
 import { useTheme } from "next-themes";
 import classes from "./Navbar.module.scss";
 import SocialShareModal from "../SocialShare/SocialShareModal";
@@ -78,7 +78,7 @@ const Navbar = () => {
       <nav
         className={combineClasses(
           classes.navbar,
-          "bg-white  dark:bg-slate-900 dark:text-white text-black",
+          "bg-white  dark:bg-slate-900 dark:text-white text-black"
         )}
       >
         {isMobile ? (

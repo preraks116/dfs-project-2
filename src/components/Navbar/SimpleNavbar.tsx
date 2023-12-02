@@ -8,7 +8,7 @@ import { useTheme } from "next-themes";
 import { BsFillMoonFill, BsFillSunFill, BsFillShareFill } from "react-icons/bs";
 import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import NavCatergoryDD from "../Misc/NavCategoryDD";
-import { iNavbar, iNavLink, iNavSocials } from "../../shared/interfaces";
+import { INavbar, INavLink, INavSocials } from "../../shared/interfaces";
 
 const SimpleNavbar = ({
   openSearch,
@@ -17,7 +17,7 @@ const SimpleNavbar = ({
   openSidebar = false,
   navSetup,
   onShareClick,
-}: iNavbar) => {
+}: INavbar) => {
   const { navLinks, logo } = navSetup;
   const [openDD, setOpenDD] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -27,7 +27,7 @@ const SimpleNavbar = ({
       className={combineClasses(
         classes.navbar__container,
         "container flex items-center justify-between",
-        "px-2",
+        "px-2"
       )}
     >
       <div className="flex items-center">
@@ -35,7 +35,7 @@ const SimpleNavbar = ({
           className={combineClasses(
             classes.mobileBurgerToggle,
             "mr-5",
-            openSidebar ? classes.mobileBurgerToggle__close : " ",
+            openSidebar ? classes.mobileBurgerToggle__close : " "
           )}
           onClick={() => toggleSideMenu()}
         >
@@ -65,7 +65,7 @@ const SimpleNavbar = ({
 
       <div className="flex items-center">
         <div className="text-[14px] font-normal items-center lg:flex hidden">
-          {navLinks.map((each: iNavLink, i: any) =>
+          {navLinks.map((each: INavLink, i: any) =>
             each.type !== "dropdown" ? (
               !each.newTab ? (
                 <LinkTo href={each.path} key={i} passHref className="mx-2">
@@ -90,14 +90,14 @@ const SimpleNavbar = ({
                 setOpenDD={() => setOpenDD(!openDD)}
                 floating
               />
-            ),
+            )
           )}
         </div>
 
         <div
           className={combineClasses(
             classes.search_icon_wrapper,
-            "ml-5 dark:text-white",
+            "ml-5 dark:text-white"
           )}
           onClick={() => openSearch()}
         >
@@ -117,7 +117,7 @@ const SimpleNavbar = ({
           aria-label="theme button"
           className={combineClasses(
             classes.theme_switch,
-            "pl-3 dark:text-white text-black",
+            "pl-3 dark:text-white text-black"
           )}
           onClick={changeTheme}
         >
