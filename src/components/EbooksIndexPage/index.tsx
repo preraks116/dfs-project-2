@@ -5,24 +5,25 @@ import { PageLayout } from "../../components";
 import { combineClasses } from "../../utils/utils";
 import ReactPaginate from "react-paginate";
 import { useEffect, useState } from "react";
-import { iArticle } from "../../shared/interfaces";
+import { iArticle, iEbook } from "../../shared/interfaces";
 import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
+import {
+  EBOOKS_LIST,
+  SORTED_EBOOKS_BY_DATE,
+} from "../../../BLOG_CONSTANTS/_EBOOKS_LIST";
+import EBookCard from "../EbookCard/EBookCard";
 
-const BlogIndexPage = ({
-  articlesPerPage = 6,
-}: {
-  articlesPerPage?: number;
-}) => {
+const EbookIndexPage = ({ ebooksPerPage = 6 }: { ebooksPerPage?: number }) => {
   const router = useRouter();
   const { category, author } = router.query;
-  const categoryArticles = SORTED_ARTICLES_BY_DATE.filter(
-    (each) => each.preview.category === category,
+  const categoryArticles = SORTED_EBOOKS_BY_DATE.filter(
+    (each) => each.header.category === category,
   );
-  const authorArticles = SORTED_ARTICLES_BY_DATE.filter(
-    (each) => each.preview.author.name === author,
+  const authorArticles = SORTED_EBOOKS_BY_DATE.filter(
+    (each) => each.header.author.name === author,
   );
 
-  const [ARTICLES, setARTICLES] = useState(SORTED_ARTICLES_BY_DATE);
+  const [ARTICLES, setARTICLES] = useState(SORTED_EBOOKS_BY_DATE);
 
   useEffect(() => {
     setARTICLES(
@@ -30,7 +31,7 @@ const BlogIndexPage = ({
         ? categoryArticles
         : author
           ? authorArticles
-          : SORTED_ARTICLES_BY_DATE,
+          : SORTED_EBOOKS_BY_DATE,
     );
   }, [category, author]);
 
@@ -39,13 +40,13 @@ const BlogIndexPage = ({
   const [itemOffset, setItemOffset] = useState(0);
 
   useEffect(() => {
-    const endOffset = itemOffset + articlesPerPage;
+    const endOffset = itemOffset + ebooksPerPage;
     setCurrentItems(ARTICLES.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(ARTICLES.length / articlesPerPage));
-  }, [itemOffset, articlesPerPage, ARTICLES]);
+    setPageCount(Math.ceil(ARTICLES.length / ebooksPerPage));
+  }, [itemOffset, ebooksPerPage, ARTICLES]);
 
   const handlePageClick = (event: any) => {
-    const newOffset = (event.selected * articlesPerPage) % ARTICLES.length;
+    const newOffset = (event.selected * ebooksPerPage) % ARTICLES.length;
     setItemOffset(newOffset);
   };
 
@@ -68,8 +69,8 @@ const BlogIndexPage = ({
 
       <div className="flex flex-wrap">
         {currentItems
-          ? (currentItems as any).map((each: iArticle, i: any) => (
-              <ArticleCard article={each.preview} path={each.path} key={i} />
+          ? (currentItems as any).map((each: iEbook, i: any) => (
+              <EBookCard ebook={each.header} path={each.path} key={i} />
             ))
           : null}
       </div>
@@ -88,4 +89,4 @@ const BlogIndexPage = ({
   );
 };
 
-export default BlogIndexPage;
+export default EbookIndexPage;

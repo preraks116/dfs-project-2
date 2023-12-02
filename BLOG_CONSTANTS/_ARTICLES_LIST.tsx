@@ -40,6 +40,7 @@ export const ARTICLES_LIST: iArticle[] = [
       thumbnail: "/public/images_histo/1.png",
       shortIntro:
         "A 83-year-old lady presented with a 14mm malignant lesion in the right breast.Early detection played a crucial role in her successful treatment.",
+      category: "eBook-1",
     },
     seo: {
       title: "BC001: Case Study - Early Detection of Breast Cancer",
@@ -60,6 +61,7 @@ export const ARTICLES_LIST: iArticle[] = [
       thumbnail: "/public/images_histo/2.png",
       shortIntro:
         "40-year-old patient diagnosed with melanoma. Explore the case study of the patient's journey through the diagnosis and research findings.",
+      category: "eBook-1",
     },
     seo: {
       title: "ME002: Case Study - Understanding Melanoma",
@@ -80,6 +82,7 @@ export const ARTICLES_LIST: iArticle[] = [
       thumbnail: "/public/images_histo/3.png",
       shortIntro:
         "50-year-old patient diagnosed with breast cancer. Explore the case study of the patient's journey through various treatment options, highlighting challenges and successes.",
+      category: "eBook-1",
     },
     seo: {
       title: "BC003: Case Study - Navigating Breast Cancer Treatment",
@@ -100,6 +103,7 @@ export const ARTICLES_LIST: iArticle[] = [
       thumbnail: "/public/images_histo/4.png",
       shortIntro:
         "55-year-old patient diagnosed with lung cancer shares insights into coping strategies and navigating life with a cancer diagnosis.",
+      category: "eBook-1",
     },
     seo: {
       title: "LU004: Case Study - Living with Lung Cancer",
@@ -120,6 +124,7 @@ export const ARTICLES_LIST: iArticle[] = [
       thumbnail: "/public/images_histo/5.png",
       shortIntro:
         "60-year-old patient diagnosed with prostate cancer advocates for awareness. Learn about the importance of early detection and spreading awareness.",
+      category: "eBook-1",
     },
     seo: {
       title: "PR005: Case Study - Prostate Cancer Awareness",
@@ -140,6 +145,7 @@ export const ARTICLES_LIST: iArticle[] = [
       thumbnail: "/public/images_histo/6.png",
       shortIntro:
         "65-year-old patient diagnosed with lung cancer and their loved ones navigate the emotional and practical aspects of coping with a recent diagnosis. Gain insights into effective coping strategies and emotional support.",
+      category: "eBook-1",
     },
     seo: {
       title: "LC006: Case Study - Coping with Lung Cancer Diagnosis",
@@ -160,6 +166,7 @@ export const ARTICLES_LIST: iArticle[] = [
       thumbnail: "/public/images_histo/7.png",
       shortIntro:
         "50-year-old patient diagnosed with renal cell carcinoma. Gain insights into the research and diagnosis process of renal cell carcinoma.",
+      category: "eBook-2",
     },
     seo: {
       title: "RE007: Case Study - Understanding Renal Cell Carcinoma",
@@ -180,6 +187,7 @@ export const ARTICLES_LIST: iArticle[] = [
       thumbnail: "/public/images_histo/8.png",
       shortIntro:
         "55-year-old patient diagnosed with lung cancer and their loved ones navigate the emotional and practical aspects of coping with a recent diagnosis. Gain insights into effective coping strategies and emotional support.",
+      category: "eBook-2",
     },
     seo: {
       title: "LC008: Case Study - Coping with Lung Cancer Diagnosis",
@@ -200,6 +208,7 @@ export const ARTICLES_LIST: iArticle[] = [
       thumbnail: "/public/images_histo/9.png",
       shortIntro:
         "60-year-old patient diagnosed with prostate cancer. Gain insights into the research and diagnosis process of prostate cancer.",
+      category: "eBook-2",
     },
     seo: {
       title: "PR009: Case Study - Insights into Prostate Cancer",
@@ -220,6 +229,7 @@ export const ARTICLES_LIST: iArticle[] = [
       thumbnail: "/public/images_histo/10.png",
       shortIntro:
         "65-year-old patient diagnosed with lung cancer shares insights into coping strategies and navigating life with a cancer diagnosis.",
+      category: "eBook-2",
     },
     seo: {
       title: "LU010: Case Study - Living with Lung Cancer",

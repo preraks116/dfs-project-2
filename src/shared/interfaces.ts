@@ -25,6 +25,19 @@ export interface iArticle {
   seo?: iSEO;
 }
 
+export interface iEbookHeaderData {
+  title: string;
+  date: string;
+  author: IAuthor;
+  description: string;
+  category: string;
+}
+
+export interface iEbook {
+  path: string;
+  header: iEbookHeaderData;
+}
+
 export interface iSEO {
   title?: string;
   description?: string;

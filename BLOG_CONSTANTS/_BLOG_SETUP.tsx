@@ -26,17 +26,7 @@ export const PRIMARY_NAV: iNavSetup = {
   // navLinks are the main navbar links that apper on top of every page
   navLinks: [
     {
-      // for categories don't add path and add type: dropdown and pass path empty
-      label: "Blog",
-      type: "dropdown",
-      path: "",
-    },
-    {
-      label: "About Us",
-      path: "/about-us",
-    },
-    {
-      label: "Github Repo",
+      label: "Github",
       path: "https://github.com/jayghevariya/Digital-Pathology-eBook_Pops-and-Pills",
       newTab: true,
     },
@@ -44,18 +34,8 @@ export const PRIMARY_NAV: iNavSetup = {
   // sideNavLinks are the links which appear when you open the side menu after clicking the burger menu icon.
   sideNavLinks: [
     {
-      // for categories dont add path and add type: dropdown
-      label: "Blog",
-      type: "dropdown",
-      path: "",
-    },
-    {
-      label: "About Us",
-      path: "/about-us",
-    },
-    {
-      label: "Github Repo",
-      path: "https://github.com/webexpe13/blog-template-using-nextjs-typescript-tailwindcss",
+      label: "Github",
+      path: "https://github.com/jayghevariya/Digital-Pathology-eBook_Pops-and-Pills",
       newTab: true,
     },
   ],
