@@ -6,7 +6,7 @@ import EbooksIndexPage from "../src/components/EbookIndexPage";
 const Home = () => {
   const [mode, setMode] = useState("eBooks");
   const handleModeChange = () => {
-    setMode(mode === "eBooks" ? "Blog" : "eBooks");
+    setMode(mode === "eBooks" ? "Articles" : "eBooks");
   };
 
   return (
@@ -18,7 +18,7 @@ const Home = () => {
             onClick={handleModeChange}
           >
             <span className="mr-2">
-              Switch to {mode === "eBooks" ? "Blog" : "eBooks"}
+              Switch to {mode === "eBooks" ? "Articles" : "eBooks"}
             </span>
           </button>
         </div>

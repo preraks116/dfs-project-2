@@ -1,7 +1,7 @@
 import LinkTo from "../LinkTo";
 import { combineClasses } from "../../utils/utils";
-import ArticleCardCategory from "../Misc/ArticleCardCategory";
-import ArticleTags from "../Misc/ArticleTags";
+import CardCategories from "../Misc/CardCategories";
+import CardTags from "../Misc/CardTags";
 import Avatar from "../Misc/Avatar";
 import classes from "./CaseCard.module.scss";
 import { ICaseHeaderData } from "../../shared/interfaces";
@@ -38,7 +38,7 @@ const SerachCaseCard = ({ content, path }: IProp) => (
             {content.title}
           </h1>
         </LinkTo>
-        <ArticleTags tags={content.tags} />
+        <CardTags tags={content.tags} />
         <div className={"flex items-center mt-3"}>
           <div className="flex items-center">
             <Avatar
@@ -46,7 +46,7 @@ const SerachCaseCard = ({ content, path }: IProp) => (
               className="w-[40px] h-[40px] mr-3 text-xl"
             />
             <LinkTo
-              href={"/blog?author=" + content.author.name}
+              href={"/ebooks?author=" + content.author.name}
               passHref
               className={combineClasses(
                 classes.author_name,
@@ -59,7 +59,7 @@ const SerachCaseCard = ({ content, path }: IProp) => (
               {article.author.name}
             </p> */}
           </div>
-          <ArticleCardCategory category={content.category} />
+          <CardCategories category={content.category} />
         </div>
       </div>
     </LinkTo>

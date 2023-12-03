@@ -3,9 +3,9 @@ import { combineClasses, getArticleDetails } from "../utils/utils";
 import { SORTED_CASES_BY_DATE } from "../../constants/_CASES_LIST";
 import Seperator from "../components/Seperator";
 import CaseHeader from "../components/CaseHeader";
-import ArticleMoreFromAuthor from "../components/Misc/ArticleMoreFromAuthor";
+import MoreFromAuthor from "../components/Misc/MoreFromAuthor";
 
-const Centered = ({ children }: any) => {
+const PageCentered = ({ children }: any) => {
   const ARTICLE_DETAILS = getArticleDetails();
   const author = ARTICLE_DETAILS.preview.author;
   const relatedArticles = SORTED_CASES_BY_DATE.filter(
@@ -31,7 +31,7 @@ const Centered = ({ children }: any) => {
         </article>
         <Seperator />
         <div className={combineClasses(classes.author_and_more, "mx-auto")}>
-          <ArticleMoreFromAuthor
+          <MoreFromAuthor
             author={author}
             relatedArticles={relatedArticles}
             articleGrid
@@ -42,4 +42,4 @@ const Centered = ({ children }: any) => {
   );
 };
 
-export default Centered;
+export default PageCentered;

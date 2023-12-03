@@ -10,7 +10,7 @@ import LinkTo from "../LinkTo";
 import Avatar from "./Avatar";
 import SocialShare from "../SocialShare/SocialShare";
 
-const ArticleMoreFromAuthor = ({
+const MoreFromAuthor = ({
   author,
   relatedArticles,
   articleGrid = false,
@@ -97,7 +97,7 @@ const ArticleMoreFromAuthor = ({
             ))}
             {relatedArticles.length > 3 ? (
               <LinkTo
-                href={"/blog?author=" + author.name}
+                href={"/ebooks?author=" + author.name}
                 passHref
                 className="block text-sm py-3 px-2 text-center dark:bg-slate-900 bg-blue-500 rounded text-white font-bold hover:!text-blue-900 dark:hover:!text-slate-400 transition-all"
               >
@@ -111,4 +111,4 @@ const ArticleMoreFromAuthor = ({
   );
 };
 
-export default ArticleMoreFromAuthor;
+export default MoreFromAuthor;

@@ -14,7 +14,7 @@ export interface ICaseHeaderData {
   title: string;
   tags: string;
   thumbnail: string;
-  shortIntro: string;
+  description: string;
   category: string;
 }
 

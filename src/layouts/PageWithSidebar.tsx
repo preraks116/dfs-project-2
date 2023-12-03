@@ -2,9 +2,15 @@ import classes from "./layouts.module.scss";
 import { combineClasses, getArticleDetails } from "../utils/utils";
 import { SORTED_CASES_BY_DATE } from "../../constants/_CASES_LIST";
 import CaseHeader from "../components/CaseHeader";
-import ArticleMoreFromAuthor from "../components/Misc/ArticleMoreFromAuthor";
+import MoreFromAuthor from "../components/Misc/MoreFromAuthor";
 
-const WithSidebar = ({ children, ads }: { children: any; ads?: string[] }) => {
+const PageWithSidebar = ({
+  children,
+  ads,
+}: {
+  children: any;
+  ads?: string[];
+}) => {
   const ARTICLE_DETAILS = getArticleDetails();
   const author = ARTICLE_DETAILS.preview.author;
   const relatedArticles = SORTED_CASES_BY_DATE.filter(
@@ -30,10 +36,7 @@ const WithSidebar = ({ children, ads }: { children: any; ads?: string[] }) => {
             {children}
           </article>
           <div className={classes.article_sidebar_wrapper}>
-            <ArticleMoreFromAuthor
-              author={author}
-              relatedArticles={relatedArticles}
-            />
+            <MoreFromAuthor author={author} relatedArticles={relatedArticles} />
             {ads && ads.length ? (
               <div className="flex flex-wrap">
                 {ads.map((each: string, i: any) => (
@@ -53,4 +56,4 @@ const WithSidebar = ({ children, ads }: { children: any; ads?: string[] }) => {
   );
 };
 
-export default WithSidebar;
+export default PageWithSidebar;

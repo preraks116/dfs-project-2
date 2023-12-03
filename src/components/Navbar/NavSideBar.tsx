@@ -56,7 +56,7 @@ const NavSidebar = ({
           className="flex items-center justify-between pb-3"
           onClick={closeNavSidebar}
         >
-          <p className="">menu</p>
+          <p className="">Menu</p>
           <div>
             <MdOutlineClose className="text-slate-800 dark:text-white text-[25px]" />
           </div>
@@ -94,77 +94,6 @@ const NavSidebar = ({
               />
             )
           )}
-          {env === "development" ? (
-            <>
-              <hr />
-              <Text subtitle className="mt-3 !text-[18px]">
-                Examples and tutorials
-              </Text>
-              <LinkTo
-                href="/pages/tutorial/all-components.tsx"
-                passHref
-                className="text-[16px] block my-3"
-              >
-                All Components
-              </LinkTo>
-              <LinkTo
-                href="/pages/tutorial/style-guide.tsx"
-                passHref
-                className="text-[16px] block my-3"
-              >
-                Style Guide
-              </LinkTo>
-              <LinkTo
-                href="/pages/tutorial/home-layout.tsx"
-                passHref
-                className="text-[16px] block my-3"
-              >
-                Home Page Layout
-              </LinkTo>
-              <LinkTo
-                href="/pages/tutorial/blog-with-sidebar-layout.tsx"
-                passHref
-                className="text-[16px] block my-3"
-              >
-                Page Layout for article with sidebar
-              </LinkTo>
-              <LinkTo
-                href="/pages/tutorial/blog-with-centered-layout.tsx"
-                passHref
-                className="text-[16px] block my-3"
-              >
-                Page Layout for centered article
-              </LinkTo>
-              <LinkTo
-                href="/pages/tutorial/how-to-setup-blog.tsx"
-                passHref
-                className="text-[16px] block my-3"
-              >
-                How to setup your blog
-              </LinkTo>
-              <LinkTo
-                href="/pages/tutorial/how-to-write-your-first-article.tsx"
-                passHref
-                className="text-[16px] block my-3"
-              >
-                How to write your first article
-              </LinkTo>
-              <LinkTo
-                href="/pages/tutorial/how-to-deploy-blog.tsx"
-                passHref
-                className="text-[16px] block my-3"
-              >
-                How to export the blog
-              </LinkTo>
-              <LinkTo
-                href="/pages/tutorial/icons.tsx"
-                passHref
-                className="text-[16px] block my-3"
-              >
-                Icons
-              </LinkTo>
-            </>
-          ) : null}
         </div>
         <hr />
         <div className="mt-5 mb-4">
@@ -190,22 +119,8 @@ const NavSidebar = ({
         <hr />
         <div className="my-5">
           <p className="text-sm font-light dark:text-gray-400 text-gray-500 mb-1">
-            Copyright © 2022
+            Pops&Pills © 2023
           </p>
-          <LinkTo
-            href="/privacy-policy"
-            passHref
-            className="text-sm font-light dark:text-gray-400 text-gray-500 pr-3"
-          >
-            Privacy Policy
-          </LinkTo>
-          <LinkTo
-            href="/terms-and-condition"
-            passHref
-            className="text-sm font-light dark:text-gray-400 text-gray-500"
-          >
-            Terms and Conditions
-          </LinkTo>
         </div>
       </aside>
     </>

@@ -1,28 +1,28 @@
 import Navbar from "../components/Navbar";
-import Centered from "./BlogCentered";
-import WithSidebar from "./BlogWithSidebar";
+import PageCentered from "./PageCentered";
+import PageWithSidebar from "./PageWithSidebar";
 import HomeLayout from "./HomeLayout";
 
-interface IBlogLayout {
+interface IPageLayout {
   children: any;
-  blogwithsidebar?: boolean;
-  blogcentered?: boolean;
+  pagewithsidebar?: boolean;
+  pagecentered?: boolean;
   home?: boolean;
 }
 
 const PageLayout = ({
   children,
-  blogwithsidebar = false,
-  blogcentered = false,
+  pagewithsidebar = false,
+  pagecentered = false,
   home = false,
-}: IBlogLayout) => {
+}: IPageLayout) => {
   return (
     <>
       <Navbar />
-      {blogwithsidebar ? (
-        <WithSidebar>{children}</WithSidebar>
-      ) : blogcentered ? (
-        <Centered>{children}</Centered>
+      {pagewithsidebar ? (
+        <PageWithSidebar>{children}</PageWithSidebar>
+      ) : pagecentered ? (
+        <PageCentered>{children}</PageCentered>
       ) : home ? (
         <HomeLayout>{children}</HomeLayout>
       ) : (

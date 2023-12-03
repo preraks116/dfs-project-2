@@ -22,7 +22,7 @@ const NavCatergoryDD = ({
         <div
           className={combineClasses(
             "flex items-center cursor-pointer",
-            floating ? "mx-2" : "justify-between",
+            floating ? "mx-2" : "justify-between"
           )}
           onClick={() => setOpenDD(!openDD)}
         >
@@ -35,16 +35,13 @@ const NavCatergoryDD = ({
             floating
               ? "absolute w-[180px] z-20 top-[30px] rounded-[4px] shadow-lg bg-white dark:bg-slate-800 border border-gray-300 dark:border-0"
               : "relative",
-            openDD ? "h-auto" : "h-0 border-0",
+            openDD ? "h-auto" : "h-0 border-0"
           )}
         >
-          <LinkTo href={"/blog"} passHref className="block text-sm py-2 px-2">
-            <span onClick={() => setOpenDD(!openDD)}>All Articles</span>
-          </LinkTo>
           {CATEGORIES &&
             CATEGORIES.map((each) => (
               <LinkTo
-                href={"/blog?category=" + each}
+                href={"/ebooks?category=" + each}
                 key={each}
                 passHref
                 className="block text-sm py-2 px-2 border-t border-gray-400"

@@ -3,8 +3,8 @@ import { ImageSize } from "../../../src/shared/enums";
 
 const CaseStudy = () => {
   return (
-    <PageLayout blogcentered>
-      <Image src="/public/images_histo/7.png" size={ImageSize.SMALL} alt="" />
+    <PageLayout pagecentered>
+      <Image src="/public/histology/7.png" size={ImageSize.SMALL} alt="" />
       <LinkTo
         href="https://histopathology-viewer.vercel.app/viewer7.html"
         passHref

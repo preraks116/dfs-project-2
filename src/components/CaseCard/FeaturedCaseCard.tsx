@@ -5,8 +5,8 @@ import {
   transformPath,
 } from "../../utils/utils";
 import Avatar from "../Misc/Avatar";
-import ArticleCardCategory from "../Misc/ArticleCardCategory";
-import ArticleTags from "../Misc/ArticleTags";
+import CardCategories from "../Misc/CardCategories";
+import CardTags from "../Misc/CardTags";
 import classes from "./CaseCard.module.scss";
 import { ICaseHeaderData } from "../../shared/interfaces";
 
@@ -36,7 +36,7 @@ const FeaturedCaseCard = ({ content, path }: IProp) => {
                 className="w-[50px] h-[50px] mr-3 text-xl"
               />
               <LinkTo
-                href={"/blog?author=" + content.author.name}
+                href={"/ebooks?author=" + content.author.name}
                 passHref
                 className={combineClasses(
                   classes.author_name,
@@ -49,7 +49,7 @@ const FeaturedCaseCard = ({ content, path }: IProp) => {
                                 {article.author.name}
                             </p> */}
             </div>
-            <ArticleCardCategory category={content.category} />
+            <CardCategories category={content.category} />
           </div>
           <LinkTo href={transformPath(path)} passHref>
             <h1
@@ -67,9 +67,9 @@ const FeaturedCaseCard = ({ content, path }: IProp) => {
               "text-[14px] font-regular mt-0 mb-[10px]"
             )}
           >
-            {content.shortIntro.slice(0, 150)} ...
+            {content.description.slice(0, 150)} ...
           </p>
-          <ArticleTags tags={content.tags} />
+          <CardTags tags={content.tags} />
           <p
             className={combineClasses(
               classes.featured_article__date,

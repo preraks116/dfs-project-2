@@ -3,9 +3,9 @@ import { ImageSize } from "../../../src/shared/enums";
 
 const CaseStudy = () => {
   return (
-    <PageLayout blogcentered>
+    <PageLayout pagecentered>
       <Image
-        src="../../../public/images_histo/1.png"
+        src="../../../public/histology/1.png"
         size={ImageSize.SMALL}
         alt=""
       />

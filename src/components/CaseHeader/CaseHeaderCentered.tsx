@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ICaseHeaderData } from "../../shared/interfaces";
 import { combineClasses } from "../../utils/utils";
-import ArticleTags from "../Misc/ArticleTags";
+import CardTags from "../Misc/CardTags";
 import classes from "./CaseHeader.module.scss";
 
 interface IProps {
@@ -30,7 +30,7 @@ const CaseHeaderCentered = ({ headerData }: IProps) => {
             <>
               <span className="px-1 font-light">in</span>
               <Link
-                href={"/blog?category=" + headerData.category}
+                href={"/ebooks?category=" + headerData.category}
                 passHref={true}
               >
                 {headerData.category}
@@ -41,7 +41,7 @@ const CaseHeaderCentered = ({ headerData }: IProps) => {
 
         <p className="my-0">{headerData.date}</p>
       </div>
-      <ArticleTags tags={headerData.tags} center />
+      <CardTags tags={headerData.tags} center />
     </div>
   );
 };

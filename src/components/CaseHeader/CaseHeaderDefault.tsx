@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ICaseHeaderData } from "../../shared/interfaces";
 import { combineClasses } from "../../utils/utils";
-import ArticleTags from "../Misc/ArticleTags";
+import CardTags from "../Misc/CardTags";
 import Avatar from "../Misc/Avatar";
 import classes from "./CaseHeader.module.scss";
 
@@ -31,7 +31,7 @@ const CaseHeaderDefault = ({ headerData }: IProps) => {
                 <p className="px-2 dark:text-gray-400 text-gray-500 my-0">in</p>
                 <p className="font-medium my-0">
                   <Link
-                    href={"/blog?category=" + headerData.category}
+                    href={"/ebooks?category=" + headerData.category}
                     passHref={true}
                   >
                     {headerData.category}
@@ -48,7 +48,7 @@ const CaseHeaderDefault = ({ headerData }: IProps) => {
       <h1 className="text-2xl md:text-4xl font-semibold mt-[20px] mb-[5px]">
         {headerData.title}
       </h1>
-      <ArticleTags tags={headerData.tags} />
+      <CardTags tags={headerData.tags} />
     </div>
   );
 };

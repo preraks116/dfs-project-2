@@ -6,8 +6,8 @@ import {
   transformPath,
 } from "../../utils/utils";
 import Avatar from "../Misc/Avatar";
-import ArticleCardCategory from "../Misc/ArticleCardCategory";
-import ArticleTags from "../Misc/ArticleTags";
+import CardCategories from "../Misc/CardCategories";
+import CardTags from "../Misc/CardTags";
 import classes from "./CaseCard.module.scss";
 import { ICaseHeaderData } from "../../shared/interfaces";
 
@@ -67,9 +67,9 @@ const CaseCard = ({ content, path }: IProp) => {
                 "text-sm font-normal mt-2 md:mt-1"
               )}
             >
-              {content.shortIntro.slice(0, 100)} ...
+              {content.description.slice(0, 100)} ...
             </p>
-            <ArticleTags tags={content.tags} />
+            <CardTags tags={content.tags} />
           </div>
         </div>
         <div
@@ -84,7 +84,7 @@ const CaseCard = ({ content, path }: IProp) => {
               className="w-[40px] h-[40px] mr-3 text-xl"
             />
             <LinkTo
-              href={"/blog?author=" + content.author.name}
+              href={"/ebooks?author=" + content.author.name}
               passHref
               className={combineClasses(
                 classes.author_name,
@@ -94,7 +94,7 @@ const CaseCard = ({ content, path }: IProp) => {
               {content.author.name}
             </LinkTo>
           </div>
-          <ArticleCardCategory category={content.category} />
+          <CardCategories category={content.category} />
         </div>
       </LinkTo>
     </div>
