@@ -10,6 +10,7 @@ export const EBOOKS_LIST: IEbook[] = [
       title: "Cancerous Insights",
       date: "Mar-22-2022",
       author: AUTHORS_LIST.WILLIAM,
+      thumbnail: "/public/histology/1.png",
       description: "A book about cancer",
       category: "eBook-1",
     },
@@ -20,6 +21,7 @@ export const EBOOKS_LIST: IEbook[] = [
       title: "Cancer Chronicles",
       date: "Mar-22-2022",
       author: AUTHORS_LIST.ALEX,
+      thumbnail: "/public/histology/7.png",
       description: "A book about cancer",
       category: "eBook-2",
     },
@@ -27,5 +29,5 @@ export const EBOOKS_LIST: IEbook[] = [
 ];
 
 export const SORTED_EBOOKS_BY_DATE = EBOOKS_LIST.sort((a, b) =>
-  new Date(a.preview.date) > new Date(b.preview.date) ? -1 : 1
+  new Date(a.preview.date) > new Date(b.preview.date) ? -1 : 1,
 );

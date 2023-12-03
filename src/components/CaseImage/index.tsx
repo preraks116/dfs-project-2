@@ -1,7 +1,7 @@
-import classes from "./CaseImage.module.scss";
 import { ImageSize } from "../../shared/enums";
 import { combineClasses, transformImagePaths } from "../../utils/utils";
 import Zoom from "react-medium-image-zoom";
+import classes from "./CaseImage.module.scss";
 
 interface ICaseImage {
   src: string;
@@ -30,7 +30,7 @@ const CaseImage = ({
         classes.article_image__wrapper,
         className,
         classes["size_" + size],
-        "display-block mx-auto my-5"
+        "display-block mx-auto my-5",
       )}
     >
       <Zoom>
@@ -45,7 +45,7 @@ const CaseImage = ({
         <p
           className={combineClasses(
             classes.article_image__caption,
-            "mb-0 mt-2 text-sm w-full text-center"
+            "mb-0 mt-2 text-sm w-full text-center",
           )}
         >
           {caption}

@@ -7,7 +7,6 @@ import {
   combineClasses,
   getDeviceType,
   removeBodyNoScroll,
-  webShare,
 } from "../../utils/utils";
 import NavSidebar from "./NavSideBar";
 import Search from "../Search";
@@ -71,12 +70,6 @@ const Navbar = () => {
     setOpenSidebar(!openSidebar);
   };
 
-  const onShareClick = () => {
-    if (!webShare()) {
-      setOpenShareModal(true);
-    }
-  };
-
   return (
     <>
       <nav
@@ -92,7 +85,6 @@ const Navbar = () => {
             toggleSideMenu={toggleSideMenu}
             openSidebar={openSidebar}
             navSetup={PRIMARY_NAV}
-            onShareClick={onShareClick}
           />
         ) : (
           (() => {
@@ -105,7 +97,6 @@ const Navbar = () => {
                     toggleSideMenu={toggleSideMenu}
                     openSidebar={openSidebar}
                     navSetup={PRIMARY_NAV}
-                    onShareClick={onShareClick}
                   />
                 );
               case NavbarType.CENTERED:
@@ -116,7 +107,6 @@ const Navbar = () => {
                     toggleSideMenu={toggleSideMenu}
                     openSidebar={openSidebar}
                     navSetup={PRIMARY_NAV}
-                    onShareClick={onShareClick}
                   />
                 );
               default:
@@ -127,7 +117,6 @@ const Navbar = () => {
                     toggleSideMenu={toggleSideMenu}
                     openSidebar={openSidebar}
                     navSetup={PRIMARY_NAV}
-                    onShareClick={onShareClick}
                   />
                 );
             }
@@ -142,11 +131,6 @@ const Navbar = () => {
         changeTheme={changeTheme}
       />
       {showSearch && <Search closeSearch={() => setShowSearch(false)} />}
-
-      <SocialShareModal
-        closeModal={() => setOpenShareModal(false)}
-        openShareModal={openShareModal}
-      />
     </>
   );
 };

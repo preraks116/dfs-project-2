@@ -1,5 +1,5 @@
 import { IAuthor } from "../../shared/interfaces";
-import { combineClasses } from "../../utils/utils";
+import { combineClasses, transformImagePaths } from "../../utils/utils";
 
 /**
  * 
@@ -21,7 +21,11 @@ const Avatar = ({
       )}
     >
       {author.profilePic ? (
-        <img src={author.profilePic} alt={author.name} width="100%" />
+        <img
+          src={transformImagePaths(author.profilePic)}
+          alt={author.name}
+          width="100%"
+        />
       ) : (
         <p className="text-center font-medium text-white">{author.name[0]}</p>
       )}

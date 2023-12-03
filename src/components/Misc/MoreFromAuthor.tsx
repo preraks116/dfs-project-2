@@ -2,13 +2,11 @@ import Link from "next/link";
 import { ICase, IAuthor } from "../../shared/interfaces";
 import {
   combineClasses,
-  isDesktopDevice,
   transformImagePaths,
   transformPath,
 } from "../../utils/utils";
 import LinkTo from "../LinkTo";
 import Avatar from "./Avatar";
-import SocialShare from "../SocialShare/SocialShare";
 
 /**
  * @description renders a more from author component which displays the author's bio, socials and related articles
@@ -54,15 +52,6 @@ const MoreFromAuthor = ({
         )}
       </div>
 
-      {isDesktopDevice() && (
-        <div className={wrapperClasses}>
-          <p className="border-b border-gray-300 pb-2 mb-3 font-medium w-full">
-            Share this article
-          </p>
-          <SocialShare />
-        </div>
-      )}
-
       {relatedArticles.length && (
         <div className={wrapperClasses}>
           <p className="border-b border-gray-300 pb-2 mb-3 font-medium w-full">
@@ -74,7 +63,7 @@ const MoreFromAuthor = ({
                 <div
                   className={combineClasses(
                     "mb-3 cursor-pointer",
-                    articleGrid ? "lg:w-1/3 md:w-1/2 w-full md:pr-2" : "w-full"
+                    articleGrid ? "lg:w-1/3 md:w-1/2 w-full md:pr-2" : "w-full",
                   )}
                   key={each.path}
                 >

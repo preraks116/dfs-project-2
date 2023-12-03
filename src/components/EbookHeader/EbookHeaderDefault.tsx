@@ -1,14 +1,13 @@
 import Link from "next/link";
-import { ICaseHeaderData } from "../../shared/interfaces";
+import { IEbookHeaderData } from "../../shared/interfaces";
 import { combineClasses } from "../../utils/utils";
-import CardTags from "../Misc/CardTags";
 import Avatar from "../Misc/Avatar";
-import classes from "./CaseHeader.module.scss";
+import classes from "./EbookHeader.module.scss";
 
 interface IProps {
-  headerData: ICaseHeaderData;
+  headerData: IEbookHeaderData;
 }
-const CaseHeaderDefault = ({ headerData }: IProps) => {
+const EbookHeaderDefault = ({ headerData }: IProps) => {
   return (
     <div className="mb-[30px]">
       <div className="mb-[10px] flex items-center mt-[15px]">
@@ -48,9 +47,8 @@ const CaseHeaderDefault = ({ headerData }: IProps) => {
       <h1 className="text-2xl md:text-4xl font-semibold mt-[20px] mb-[5px]">
         {headerData.title}
       </h1>
-      <CardTags tags={headerData.tags} />
     </div>
   );
 };
 
-export default CaseHeaderDefault;
+export default EbookHeaderDefault;

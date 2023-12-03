@@ -22,13 +22,13 @@ const SerachCaseCard = ({ content, path }: IProp) => (
       <div
         className={combineClasses(
           classes.article_card,
-          "px-[15px] py-[10px] border-b-[5px] border-blue-600 dark:bg-slate-800 dark:text-white bg-white text-black drop-shadow-lg"
+          "px-[15px] py-[10px] border-b-[5px] border-blue-600 dark:bg-slate-800 dark:text-white bg-white text-black drop-shadow-lg",
         )}
       >
         <p
           className={combineClasses(
             classes.article_card__date,
-            "font-medium text-xs mt-3 mb-2"
+            "font-medium text-xs mt-3 mb-2",
           )}
         >
           {content.date}
@@ -37,7 +37,7 @@ const SerachCaseCard = ({ content, path }: IProp) => (
           <h1
             className={combineClasses(
               classes.article_card__title,
-              "text-[22px] font-bold my-0"
+              "text-[22px] font-bold my-0",
             )}
           >
             {content.title}
@@ -55,7 +55,7 @@ const SerachCaseCard = ({ content, path }: IProp) => (
               passHref
               className={combineClasses(
                 classes.author_name,
-                "text-sm font-medium"
+                "text-sm font-medium",
               )}
             >
               {content.author.name}

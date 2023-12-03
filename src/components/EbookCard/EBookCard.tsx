@@ -1,7 +1,12 @@
 import { IEbookHeaderData } from "../../shared/interfaces";
 import classes from "./EbookCard.module.scss";
-import { combineClasses, transformPath } from "../../utils/utils";
+import {
+  combineClasses,
+  transformImagePaths,
+  transformPath,
+} from "../../utils/utils";
 import LinkTo from "../LinkTo";
+import Avatar from "../Misc/Avatar";
 
 interface IProp {
   content: IEbookHeaderData;
@@ -26,7 +31,25 @@ const EBookCard = ({ content, path }: IProp) => {
             "w-full md:w-[55%] lg:px-[50px] px-[15px] lg:py-[40px] py-[20px]"
           }
         >
-          <LinkTo href={"/ebooks/?category=" + content.category} passHref>
+          <div className={"mt-0 mb-[10px] flex items-center"}>
+            <div className={"flex items-center"}>
+              <Avatar
+                author={content.author}
+                className="w-[50px] h-[50px] mr-3 text-xl"
+              />
+              <LinkTo
+                href={"/ebooks?author=" + content.author.name}
+                passHref
+                className={combineClasses(
+                  classes.author_name,
+                  "text-[14px] md:text-[16px] my-0 font-medium"
+                )}
+              >
+                {content.author.name}
+              </LinkTo>
+            </div>
+          </div>
+          <LinkTo href={"ebooks?=category=" + content.category}>
             <h1
               className={combineClasses(
                 classes.featured_article__title,
@@ -42,7 +65,7 @@ const EBookCard = ({ content, path }: IProp) => {
               "text-[14px] font-regular mt-0 mb-[10px]"
             )}
           >
-            {content.description.slice(0, 150)} ...
+            {content.description}
           </p>
           <p
             className={combineClasses(
@@ -53,9 +76,22 @@ const EBookCard = ({ content, path }: IProp) => {
             {content.date}
           </p>
         </div>
+        <div
+          className={combineClasses(
+            classes.featured_article__image,
+            "rounded-sm overflow-hidden"
+          )}
+        >
+          <img
+            src={transformImagePaths(content.thumbnail)}
+            alt={content.title}
+            className="max-h-80 h-full w-full object-cover"
+          />
+          <LinkTo href={"ebooks?=category=" + content.category} />
+        </div>
       </div>
     </>
   );
 };
 
-export default EBookCard;
+export default EbookCard;

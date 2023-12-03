@@ -1,363 +1,704 @@
 <!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=10">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <meta
+      name="viewport"
+      content="initial-scale=1.0, user-scalable=no, width=device-width"
+    />
 
     <!-- Include PMA.UI required libraries downloaded or from CDN -->
     <script src="./jquery.min.js"></script>
-    <link href="./font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link
+      href="./font-awesome/css/font-awesome.min.css"
+      type="text/css"
+      rel="stylesheet"
+    />
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
     <!-- Option 1: Include in HTML -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
 
     <!-- Include PMA.UI script & css -->
     <script src="./pma.ui.js"></script>
-    <link href="./pma.ui.css" type="text/css" rel="stylesheet">
+    <link href="./pma.ui.css" type="text/css" rel="stylesheet" />
 
     <!-- Include custom script & css -->
     <!-- <script src="./js/viewer.js"></script> -->
     <script src="./js/annotations14.js"></script>
 
-    <link href="./css/annotations.css" type="text/css" rel="stylesheet">
+    <link href="./css/annotations.css" type="text/css" rel="stylesheet" />
 
     <!-- inline script for form -->
     <script>
-        // initially move the form out of the screen
-        window.onload = function () {
-            console.log("hello")
-            // document.getElementById("form").style.left = "-1000px";
-            let snapdiv = document.getElementById("snapdiv");
-            let snapbutton = document.getElementById("snapshot");
-            let closesnap = document.getElementById("close-snap");
+      // initially move the form out of the screen
+      window.onload = function () {
+        console.log("hello");
+        // document.getElementById("form").style.left = "-1000px";
+        let snapdiv = document.getElementById("snapdiv");
+        let snapbutton = document.getElementById("snapshot");
+        let closesnap = document.getElementById("close-snap");
 
-            let sliderbutton = document.getElementById("sliders");
-            let sliderdiv = document.getElementById("filters");
-            sliderdiv.style.right = "-1000px";
-            sliderbutton.addEventListener("click", function (event) {
-                // if the right value is negative, make it 20px or else if positive make it -1000px
-                console.log("hi")
-                sliderdiv.style.right = sliderdiv.style.right === "-1000px" ? "20px" : "-1000px";
-            });
+        let sliderbutton = document.getElementById("sliders");
+        let sliderdiv = document.getElementById("filters");
+        sliderdiv.style.right = "-1000px";
+        sliderbutton.addEventListener("click", function (event) {
+          // if the right value is negative, make it 20px or else if positive make it -1000px
+          console.log("hi");
+          sliderdiv.style.right =
+            sliderdiv.style.right === "-1000px" ? "20px" : "-1000px";
+        });
 
-            console.log(snapdiv)
-            snapbutton.addEventListener("click", function (event) {
-                // if the right value is negative, make it 20px or else if positive make it -1000px
-                console.log("hi")
-                snapdiv.style.right = snapdiv.style.right === "-1000px" ? "20px" : "-1000px";
-            });
+        console.log(snapdiv);
+        snapbutton.addEventListener("click", function (event) {
+          // if the right value is negative, make it 20px or else if positive make it -1000px
+          console.log("hi");
+          snapdiv.style.right =
+            snapdiv.style.right === "-1000px" ? "20px" : "-1000px";
+        });
 
-            closesnap.onclick = function () {
-                snapdiv.style.right = "-1000px";
-            }
+        closesnap.onclick = function () {
+          snapdiv.style.right = "-1000px";
         };
+      };
     </script>
-    
-    <title>HistoPathoBook | pops&pills</title>
-</head>
 
-<body>
+    <title>HistoPathoBook | pops&pills</title>
+  </head>
+
+  <body>
     <!-- The element that will host the viewport -->
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-3 py-1 border-right" id="filters" style="max-height: 100vh; overflow-y: auto">
-                <form>
-                    <fieldset id="controls" disabled>
-                        <div class="form-group row">
-                            <label for="inputBrightness" class="col-4 col-form-label col-form-label-sm">Brightness</label>
-                            <div class="col-6 pt-2">
-                                <input type="range" class="custom-range" min="-256" max="256" step="1" id="inputBrightness" value="">
-                            </div>
-                            <label for="inputBrightness" id="inputBrightness-label" class="col-2 col-form-label col-form-label-sm"></label>
-                        </div>
-                        <hr />
-                        <div class="form-group row">
-                            <label for="inputColorBalance" class="col-4 col-form-label col-form-label-sm align-self-center">Color balance</label>
-                            <div class="col-8 pt-2">
-                                <div class="form-group row">
-                                    <label for="inputBrightness" class="col-2 col-form-label col-form-label-sm">Red</label>
-                                    <div class="col-7 pt-2">
-                                        <input type="range" class="custom-range" min="0" max="2" step="0.01" id="inputColorBalanceR" value="">
-                                    </div>
-                                    <label for="inputColorBalanceR" id="inputColorBalanceR-label" class="col-3 col-form-label col-form-label-sm"></label>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputBrightness" class="col-2 col-form-label col-form-label-sm">Green</label>
-                                    <div class="col-7 pt-2">
-                                        <input type="range" class="custom-range" min="0" max="2" step="0.01" id="inputColorBalanceG" value="">
-                                    </div>
-                                    <label for="inputColorBalanceG" id="inputColorBalanceG-label" class="col-3 col-form-label col-form-label-sm"></label>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputBrightness" class="col-2 col-form-label col-form-label-sm">Blue</label>
-                                    <div class="col-7 pt-2">
-                                        <input type="range" class="custom-range" min="0" max="2" step="0.01" id="inputColorBalanceB" value="">
-                                    </div>
-                                    <label for="inputColorBalanceB" id="inputColorBalanceB-label" class="col-3 col-form-label col-form-label-sm"></label>
-                                </div>
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="form-group row">
-                            <label for="inputContrast" class="col-4 col-form-label col-form-label-sm">Contrast</label>
-                            <div class="col-6 pt-2">
-                                <input type="range" class="custom-range" min="-20" max="20" step="0.1" id="inputContrast" value="">
-                            </div>
-                            <label for="inputContrast" id="inputContrast-label" class="col-2 col-form-label col-form-label-sm"></label>
-                        </div>
-                        <hr />
-                        <div class="form-group row">
-                            <label for="inputGamma" class="col-4 col-form-label col-form-label-sm">Gamma</label>
-                            <div class="col-6 pt-2">
-                                <input type="range" class="custom-range" min="0" max="50" step="0.1" id="inputGamma" value="">
-                            </div>
-                            <label for="inputGamma" id="inputGamma-label" class="col-2 col-form-label col-form-label-sm"></label>
-                        </div>
-                        <hr />
-                        <div class="form-group row">
-                            <label for="inputFlip" class="col-4 col-form-label col-form-label-sm">Flip</label>
-                            <div class="col-8">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inputFlipHor">
-                                    <label class="form-check-label" for="inputFlipHor">Horizontally</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inputFlipVer">
-                                    <label class="form-check-label" for="inputFlipVer">Vertically</label>
-                                </div>
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="form-group row">
-                            <div class="col">
-                                <button id="reset-btn" type="button" class="btn btn-light btn-sm">Reset values</button>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
+      <div class="row">
+        <div
+          class="col-3 py-1 border-right"
+          id="filters"
+          style="max-height: 100vh; overflow-y: auto"
+        >
+          <form>
+            <fieldset id="controls" disabled>
+              <div class="form-group row">
+                <label
+                  for="inputBrightness"
+                  class="col-4 col-form-label col-form-label-sm"
+                  >Brightness</label
+                >
+                <div class="col-6 pt-2">
+                  <input
+                    type="range"
+                    class="custom-range"
+                    min="-256"
+                    max="256"
+                    step="1"
+                    id="inputBrightness"
+                    value=""
+                  />
+                </div>
+                <label
+                  for="inputBrightness"
+                  id="inputBrightness-label"
+                  class="col-2 col-form-label col-form-label-sm"
+                ></label>
+              </div>
+              <hr />
+              <div class="form-group row">
+                <label
+                  for="inputColorBalance"
+                  class="col-4 col-form-label col-form-label-sm align-self-center"
+                  >Color balance</label
+                >
+                <div class="col-8 pt-2">
+                  <div class="form-group row">
+                    <label
+                      for="inputBrightness"
+                      class="col-2 col-form-label col-form-label-sm"
+                      >Red</label
+                    >
+                    <div class="col-7 pt-2">
+                      <input
+                        type="range"
+                        class="custom-range"
+                        min="0"
+                        max="2"
+                        step="0.01"
+                        id="inputColorBalanceR"
+                        value=""
+                      />
+                    </div>
+                    <label
+                      for="inputColorBalanceR"
+                      id="inputColorBalanceR-label"
+                      class="col-3 col-form-label col-form-label-sm"
+                    ></label>
+                  </div>
+                  <div class="form-group row">
+                    <label
+                      for="inputBrightness"
+                      class="col-2 col-form-label col-form-label-sm"
+                      >Green</label
+                    >
+                    <div class="col-7 pt-2">
+                      <input
+                        type="range"
+                        class="custom-range"
+                        min="0"
+                        max="2"
+                        step="0.01"
+                        id="inputColorBalanceG"
+                        value=""
+                      />
+                    </div>
+                    <label
+                      for="inputColorBalanceG"
+                      id="inputColorBalanceG-label"
+                      class="col-3 col-form-label col-form-label-sm"
+                    ></label>
+                  </div>
+                  <div class="form-group row">
+                    <label
+                      for="inputBrightness"
+                      class="col-2 col-form-label col-form-label-sm"
+                      >Blue</label
+                    >
+                    <div class="col-7 pt-2">
+                      <input
+                        type="range"
+                        class="custom-range"
+                        min="0"
+                        max="2"
+                        step="0.01"
+                        id="inputColorBalanceB"
+                        value=""
+                      />
+                    </div>
+                    <label
+                      for="inputColorBalanceB"
+                      id="inputColorBalanceB-label"
+                      class="col-3 col-form-label col-form-label-sm"
+                    ></label>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="form-group row">
+                <label
+                  for="inputContrast"
+                  class="col-4 col-form-label col-form-label-sm"
+                  >Contrast</label
+                >
+                <div class="col-6 pt-2">
+                  <input
+                    type="range"
+                    class="custom-range"
+                    min="-20"
+                    max="20"
+                    step="0.1"
+                    id="inputContrast"
+                    value=""
+                  />
+                </div>
+                <label
+                  for="inputContrast"
+                  id="inputContrast-label"
+                  class="col-2 col-form-label col-form-label-sm"
+                ></label>
+              </div>
+              <hr />
+              <div class="form-group row">
+                <label
+                  for="inputGamma"
+                  class="col-4 col-form-label col-form-label-sm"
+                  >Gamma</label
+                >
+                <div class="col-6 pt-2">
+                  <input
+                    type="range"
+                    class="custom-range"
+                    min="0"
+                    max="50"
+                    step="0.1"
+                    id="inputGamma"
+                    value=""
+                  />
+                </div>
+                <label
+                  for="inputGamma"
+                  id="inputGamma-label"
+                  class="col-2 col-form-label col-form-label-sm"
+                ></label>
+              </div>
+              <hr />
+              <div class="form-group row">
+                <label
+                  for="inputFlip"
+                  class="col-4 col-form-label col-form-label-sm"
+                  >Flip</label
+                >
+                <div class="col-8">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inputFlipHor"
+                    />
+                    <label class="form-check-label" for="inputFlipHor"
+                      >Horizontally</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inputFlipVer"
+                    />
+                    <label class="form-check-label" for="inputFlipVer"
+                      >Vertically</label
+                    >
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="form-group row">
+                <div class="col">
+                  <button
+                    id="reset-btn"
+                    type="button"
+                    class="btn btn-light btn-sm"
+                  >
+                    Reset values
+                  </button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+        <!-- The element that will host annotation actions -->
+        <div
+          class="col-2 py-1 border-right"
+          id="snapdiv"
+          style="max-height: 100vh; overflow-y: auto"
+        >
+          <legend class="text-center">
+            Snapshot options
+            <button
+              type="button"
+              class="btn-close float-end"
+              aria-label="Close"
+              id="close-snap"
+            ></button>
+          </legend>
+          <form id="form">
+            <div class="form-group row">
+              <label
+                for="inputFormat"
+                class="col-6 col-form-label col-form-label-sm"
+                >Format</label
+              >
+              <div class="col-6">
+                <select class="form-control form-control-sm" id="inputFormat">
+                  <option value="png" selected>png</option>
+                  <option value="jpg">jpg</option>
+                  <option value="blob">blob</option>
+                </select>
+              </div>
             </div>
-            <!-- The element that will host annotation actions -->
-            <div class="col-2 py-1 border-right" id="snapdiv" style="max-height: 100vh; overflow-y: auto">
-                <legend class="text-center">Snapshot options
-                    <button type="button" class="btn-close float-end" aria-label="Close" id="close-snap"></button>
-                </legend>
-                <form id="form">
-                    <div class="form-group row">
-                        <label for="inputFormat" class="col-6 col-form-label col-form-label-sm">Format</label>
-                        <div class="col-6">
-                            <select class="form-control form-control-sm" id="inputFormat">
-                                <option value="png" selected>png</option>
-                                <option value="jpg">jpg</option>
-                                <option value="blob">blob</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputTitle" class="col-6 col-form-label col-form-label-sm">Title</label>
-                        <div class="col-6">
-                            <input type="text" class="form-control form-control-sm" id="inputTitle">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputTitleLocation" class="col-6 col-form-label col-form-label-sm">Title
-                            location</label>
-                        <div class="col-6">
-                            <select class="form-control form-control-sm" id="inputTitleLocation">
-                                <option value="Top" selected>Top</option>
-                                <option value="Bottom">Bottom</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputTitleFont" class="col-6 col-form-label col-form-label-sm">Title
-                            font</label>
-                        <div class="col-6">
-                            <input type="text" class="form-control form-control-sm" id="inputTitleFont"
-                                placeholder="32px serif">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputTitleFontColor" class="col-6 col-form-label col-form-label-sm">Title
-                            color</label>
-                        <div class="col-6">
-                            <input type="color" class="form-control form-control-sm" id="inputTitleFontColor"
-                                value="#000000">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputScalebar" class="col-6 col-form-label col-form-label-sm">Scalebar</label>
-                        <div class="col-6">
-                            <select class="form-control form-control-sm" id="inputScalebar">
-                                <option value="true" selected>True</option>
-                                <option value="false">False</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputScalebarLocation" class="col-6 col-form-label col-form-label-sm">Scalebar
-                            location</label>
-                        <div class="col-6">
-                            <select class="form-control form-control-sm" id="inputScalebarLocation">
-                                <option value="TopLeft" selected>TopLeft</option>
-                                <option value="TopRight">TopRight</option>
-                                <option value="BottomLeft">BottomLeft</option>
-                                <option value="BottomRight">BottomRight</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputScalebarFont" class="col-6 col-form-label col-form-label-sm">Scalebar
-                            font</label>
-                        <div class="col-6">
-                            <input type="text" class="form-control form-control-sm" id="inputScalebarFont"
-                                placeholder="24px serif">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputScalebarFontColor" class="col-6 col-form-label col-form-label-sm">Scalebar
-                            color</label>
-                        <div class="col-6">
-                            <input type="color" class="form-control form-control-sm" id="inputScalebarFontColor"
-                                value="#ff0000">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputBarcode" class="col-6 col-form-label col-form-label-sm">Barcode</label>
-                        <div class="col-6">
-                            <select class="form-control form-control-sm" id="inputBarcode">
-                                <option value="true">True</option>
-                                <option value="false" selected>False</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputOverview" class="col-6 col-form-label col-form-label-sm">Overview</label>
-                        <div class="col-6">
-                            <select class="form-control form-control-sm" id="inputOverview">
-                                <option value="true">True</option>
-                                <option value="false" selected>False</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputDPI" class="col-6 col-form-label col-form-label-sm">DPI</label>
-                        <div class="col-6">
-                            <input type="number" min="0" step="1" class="form-control form-control-sm" id="inputDPI">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputFilename" class="col-6 col-form-label col-form-label-sm">Filename</label>
-                        <div class="col-6">
-                            <input type="text" class="form-control form-control-sm" id="inputFilename"
-                                placeholder="snapshot">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputAction" class="col-6 col-form-label col-form-label-sm">Action</label>
-                        <div class="col-6">
-                            <select class="form-control form-control-sm" id="inputAction">
-                                <option value="download" selected>download</option>
-                                <option value="open-tab">open-tab</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row my-2">
-
-                    </div>
-                    <div class="text-center">
-                        <button type="button" class="btn btn-primary btn-sm" id="snapshot-btn"
-                            title="Click to take snapshot" disabled>
-                            Save Image
-                        </button>
-                    </div>
-
-                </form>
+            <div class="form-group row">
+              <label
+                for="inputTitle"
+                class="col-6 col-form-label col-form-label-sm"
+                >Title</label
+              >
+              <div class="col-6">
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  id="inputTitle"
+                />
+              </div>
             </div>
-            <div class="col-auto annotations">
-                <div class="btn-group-vertical btn-group-md">
-                    <button type="button" class="btn btn-light" disabled data-action="edit" data-type="Wand"
-                        title="Magic Wand">
-                        <!-- <i class="bi bi-brush"></i> -->
-                        <!-- <i class="bi bi-magic"></i> -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-magic" viewBox="0 0 16 16">
-                            <path d="M9.5 2.672a.5.5 0 1 0 1 0V.843a.5.5 0 0 0-1 0v1.829Zm4.5.035A.5.5 0 0 0 13.293 2L12 3.293a.5.5 0 1 0 .707.707zM7.293 4A.5.5 0 1 0 8 3.293L6.707 2A.5.5 0 0 0 6 2.707zm-.621 2.5a.5.5 0 1 0 0-1H4.843a.5.5 0 1 0 0 1zm8.485 0a.5.5 0 1 0 0-1h-1.829a.5.5 0 0 0 0 1zM13.293 10A.5.5 0 1 0 14 9.293L12.707 8a.5.5 0 1 0-.707.707zM9.5 11.157a.5.5 0 0 0 1 0V9.328a.5.5 0 0 0-1 0zm1.854-5.097a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L8.646 5.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0l1.293-1.293Zm-3 3a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L.646 13.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0z"/>
-                          </svg>
-                    </button>
-                    <button type="button" class="btn btn-light" disabled data-action="edit" data-type="Brush"
-                        title="Brush">
-                        <!-- <i class="fas fa-paint-brush"></i> -->
-                        <i class="bi bi-brush"></i>
-                    </button>
-                    <button type="button" class="btn btn-light" disabled data-action="draw" data-type="Freehand"
-                        title="Freehand">
-                        <i class="bi-pencil"></i>
-                    </button>
-                    <button type="button" class="btn btn-light" disabled data-action="draw" data-type="CompoundFreehand"
-                        title="Compound polygon">
-                        <!-- <i class="fab fa-pushed"></i> -->
-                        <i class="bi bi-heptagon"></i>
-                    </button>
-                    <button type="button" class="btn btn-light" disabled data-action="draw" data-type="ClosedFreehand"
-                        title="Closed freehand polygon">
-                        <!-- <i class="fas fa-draw-polygon"></i> -->
-                        <i class="bi bi-bounding-box-circles"></i>
-                    </button>
-                    <button type="button" class="btn btn-light" disabled data-action="draw" data-type="Arrow"
-                        title="Arrow">
-                        <!-- <i class="fas fa-arrow-right"></i> -->
-                        <i class="bi bi-arrow-right"></i>
-                    </button>
-                    <button type="button" class="btn btn-light" disabled data-action="draw" data-type="Point"
-                        title="Point">
-                        <!-- <i class="far fa-dot-circle"></i> -->
-                        <i class="bi bi-record-circle-fill"></i>
-                    </button>
-                    <button type="button" class="btn btn-light" disabled data-action="draw" data-type="Line"
-                        title="Line">
-                        <!-- <i class="fas fa-minus"></i> -->
-                        <i class="bi bi-dash"></i>
-                    </button>
-                    <button type="button" class="btn btn-light" disabled data-action="draw" data-type="MultiPoint"
-                        title="MultiPoint">
-                        <!-- <i class="fas fa-braille"></i> -->
-                        <i class="bi bi-hand-index"></i>
-                    </button>
-                    <div class="dropdown-divider horizontal"></div>
-                    <button type="button" class="btn btn-light" disabled data-action="edit" data-type="Subtract"
-                        title="Subtract">
-                        <i class="bi bi-eraser"></i>
-                    </button>
-                    <button type="button" class="btn btn-light" disabled data-action="edit" data-type="Addition"
-                        title="Addition">
-                        <i class="bi bi-plus-circle"></i>
-                    </button>
-                    <div class="dropdown-divider horizontal"></div>
-                    <button type="button" class="btn btn-light" disabled data-action="edit" data-type="Modify"
-                        title="Modify">
-                        <!-- <i class="fas fa-expand"></i> -->
-                        <i class="bi bi-aspect-ratio"></i>
-                    </button>
-                    <button type="button" class="btn btn-light" disabled data-action="edit" data-type="Transform"
-                        title="Transform">
-                        <!-- <i class="fas fa-arrows-alt"></i> -->
-                        <i class="bi bi-arrows-move"></i>
-                    </button>
-                    <div class="dropdown-divider horizontal"></div>
-                    <button type="button" id="snapshot" class="btn btn-light" disabled data-action="null" data-type="null"
-                        title="Snapshot">
-                        <!-- <i class="fas fa-arrows-alt"></i> -->
-                        <i class="bi bi-camera"></i>
-                    </button>
-                    <button type="button" id="sliders" class="btn btn-light" disabled data-action="null" data-type="null"
-                        title="Snapshot">
-                        <!-- <i class="fas fa-arrows-alt"></i> -->
-                        <i class="bi bi-sliders"></i>
-                    </button>
-                    <div class="dropdown-divider horizontal"></div>
-                    <!-- <button type="button" class="btn btn-light" disabled data-action="union" data-type=""
+            <div class="form-group row">
+              <label
+                for="inputTitleLocation"
+                class="col-6 col-form-label col-form-label-sm"
+                >Title location</label
+              >
+              <div class="col-6">
+                <select
+                  class="form-control form-control-sm"
+                  id="inputTitleLocation"
+                >
+                  <option value="Top" selected>Top</option>
+                  <option value="Bottom">Bottom</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label
+                for="inputTitleFont"
+                class="col-6 col-form-label col-form-label-sm"
+                >Title font</label
+              >
+              <div class="col-6">
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  id="inputTitleFont"
+                  placeholder="32px serif"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label
+                for="inputTitleFontColor"
+                class="col-6 col-form-label col-form-label-sm"
+                >Title color</label
+              >
+              <div class="col-6">
+                <input
+                  type="color"
+                  class="form-control form-control-sm"
+                  id="inputTitleFontColor"
+                  value="#000000"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label
+                for="inputScalebar"
+                class="col-6 col-form-label col-form-label-sm"
+                >Scalebar</label
+              >
+              <div class="col-6">
+                <select class="form-control form-control-sm" id="inputScalebar">
+                  <option value="true" selected>True</option>
+                  <option value="false">False</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label
+                for="inputScalebarLocation"
+                class="col-6 col-form-label col-form-label-sm"
+                >Scalebar location</label
+              >
+              <div class="col-6">
+                <select
+                  class="form-control form-control-sm"
+                  id="inputScalebarLocation"
+                >
+                  <option value="TopLeft" selected>TopLeft</option>
+                  <option value="TopRight">TopRight</option>
+                  <option value="BottomLeft">BottomLeft</option>
+                  <option value="BottomRight">BottomRight</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label
+                for="inputScalebarFont"
+                class="col-6 col-form-label col-form-label-sm"
+                >Scalebar font</label
+              >
+              <div class="col-6">
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  id="inputScalebarFont"
+                  placeholder="24px serif"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label
+                for="inputScalebarFontColor"
+                class="col-6 col-form-label col-form-label-sm"
+                >Scalebar color</label
+              >
+              <div class="col-6">
+                <input
+                  type="color"
+                  class="form-control form-control-sm"
+                  id="inputScalebarFontColor"
+                  value="#ff0000"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label
+                for="inputBarcode"
+                class="col-6 col-form-label col-form-label-sm"
+                >Barcode</label
+              >
+              <div class="col-6">
+                <select class="form-control form-control-sm" id="inputBarcode">
+                  <option value="true">True</option>
+                  <option value="false" selected>False</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label
+                for="inputOverview"
+                class="col-6 col-form-label col-form-label-sm"
+                >Overview</label
+              >
+              <div class="col-6">
+                <select class="form-control form-control-sm" id="inputOverview">
+                  <option value="true">True</option>
+                  <option value="false" selected>False</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label
+                for="inputDPI"
+                class="col-6 col-form-label col-form-label-sm"
+                >DPI</label
+              >
+              <div class="col-6">
+                <input
+                  type="number"
+                  min="0"
+                  step="1"
+                  class="form-control form-control-sm"
+                  id="inputDPI"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label
+                for="inputFilename"
+                class="col-6 col-form-label col-form-label-sm"
+                >Filename</label
+              >
+              <div class="col-6">
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  id="inputFilename"
+                  placeholder="snapshot"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label
+                for="inputAction"
+                class="col-6 col-form-label col-form-label-sm"
+                >Action</label
+              >
+              <div class="col-6">
+                <select class="form-control form-control-sm" id="inputAction">
+                  <option value="download" selected>download</option>
+                  <option value="open-tab">open-tab</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row my-2"></div>
+            <div class="text-center">
+              <button
+                type="button"
+                class="btn btn-primary btn-sm"
+                id="snapshot-btn"
+                title="Click to take snapshot"
+                disabled
+              >
+                Save Image
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="col-auto annotations">
+          <div class="btn-group-vertical btn-group-md">
+            <button
+              type="button"
+              class="btn btn-light"
+              disabled
+              data-action="edit"
+              data-type="Wand"
+              title="Magic Wand"
+            >
+              <!-- <i class="bi bi-brush"></i> -->
+              <!-- <i class="bi bi-magic"></i> -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-magic"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M9.5 2.672a.5.5 0 1 0 1 0V.843a.5.5 0 0 0-1 0v1.829Zm4.5.035A.5.5 0 0 0 13.293 2L12 3.293a.5.5 0 1 0 .707.707zM7.293 4A.5.5 0 1 0 8 3.293L6.707 2A.5.5 0 0 0 6 2.707zm-.621 2.5a.5.5 0 1 0 0-1H4.843a.5.5 0 1 0 0 1zm8.485 0a.5.5 0 1 0 0-1h-1.829a.5.5 0 0 0 0 1zM13.293 10A.5.5 0 1 0 14 9.293L12.707 8a.5.5 0 1 0-.707.707zM9.5 11.157a.5.5 0 0 0 1 0V9.328a.5.5 0 0 0-1 0zm1.854-5.097a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L8.646 5.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0l1.293-1.293Zm-3 3a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L.646 13.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0z"
+                />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="btn btn-light"
+              disabled
+              data-action="edit"
+              data-type="Brush"
+              title="Brush"
+            >
+              <!-- <i class="fas fa-paint-brush"></i> -->
+              <i class="bi bi-brush"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-light"
+              disabled
+              data-action="draw"
+              data-type="Freehand"
+              title="Freehand"
+            >
+              <i class="bi-pencil"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-light"
+              disabled
+              data-action="draw"
+              data-type="CompoundFreehand"
+              title="Compound polygon"
+            >
+              <!-- <i class="fab fa-pushed"></i> -->
+              <i class="bi bi-heptagon"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-light"
+              disabled
+              data-action="draw"
+              data-type="ClosedFreehand"
+              title="Closed freehand polygon"
+            >
+              <!-- <i class="fas fa-draw-polygon"></i> -->
+              <i class="bi bi-bounding-box-circles"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-light"
+              disabled
+              data-action="draw"
+              data-type="Arrow"
+              title="Arrow"
+            >
+              <!-- <i class="fas fa-arrow-right"></i> -->
+              <i class="bi bi-arrow-right"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-light"
+              disabled
+              data-action="draw"
+              data-type="Point"
+              title="Point"
+            >
+              <!-- <i class="far fa-dot-circle"></i> -->
+              <i class="bi bi-record-circle-fill"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-light"
+              disabled
+              data-action="draw"
+              data-type="Line"
+              title="Line"
+            >
+              <!-- <i class="fas fa-minus"></i> -->
+              <i class="bi bi-dash"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-light"
+              disabled
+              data-action="draw"
+              data-type="MultiPoint"
+              title="MultiPoint"
+            >
+              <!-- <i class="fas fa-braille"></i> -->
+              <i class="bi bi-hand-index"></i>
+            </button>
+            <div class="dropdown-divider horizontal"></div>
+            <button
+              type="button"
+              class="btn btn-light"
+              disabled
+              data-action="edit"
+              data-type="Subtract"
+              title="Subtract"
+            >
+              <i class="bi bi-eraser"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-light"
+              disabled
+              data-action="edit"
+              data-type="Addition"
+              title="Addition"
+            >
+              <i class="bi bi-plus-circle"></i>
+            </button>
+            <div class="dropdown-divider horizontal"></div>
+            <button
+              type="button"
+              class="btn btn-light"
+              disabled
+              data-action="edit"
+              data-type="Modify"
+              title="Modify"
+            >
+              <!-- <i class="fas fa-expand"></i> -->
+              <i class="bi bi-aspect-ratio"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-light"
+              disabled
+              data-action="edit"
+              data-type="Transform"
+              title="Transform"
+            >
+              <!-- <i class="fas fa-arrows-alt"></i> -->
+              <i class="bi bi-arrows-move"></i>
+            </button>
+            <div class="dropdown-divider horizontal"></div>
+            <button
+              type="button"
+              id="snapshot"
+              class="btn btn-light"
+              disabled
+              data-action="null"
+              data-type="null"
+              title="Snapshot"
+            >
+              <!-- <i class="fas fa-arrows-alt"></i> -->
+              <i class="bi bi-camera"></i>
+            </button>
+            <button
+              type="button"
+              id="sliders"
+              class="btn btn-light"
+              disabled
+              data-action="null"
+              data-type="null"
+              title="Snapshot"
+            >
+              <!-- <i class="fas fa-arrows-alt"></i> -->
+              <i class="bi bi-sliders"></i>
+            </button>
+            <div class="dropdown-divider horizontal"></div>
+            <!-- <button type="button" class="btn btn-light" disabled data-action="union" data-type=""
                         title="Union - Combine 2 or more annotations into a single annotation. In this example only annotations of type Compound polygon and Arrow are allowed. Disabled if less than 2 annotations selected or incompatible annotations selected!">
                         <i class="fas fa-plus-square"></i>
                     </button>
@@ -366,107 +707,204 @@
                         <i class="fas fa-minus-square"></i>
                     </button>
                     <div class="dropdown-divider horizontal"></div> -->
-                    <input id="color-picker-native" type='color' value='#78eb10' class="color-picker px-2" />
-                    <input id="color-picker-js" type='button' value=' ' class="btn btn-light" style="width: 50px" />
-                </div>
-                <input id="color-picker-hidden" type='hidden' value='#78eb10' class="color-picker" />
-            </div>
-            <div class="col d-flex flex-column vh-100">
-                <div class="row top-row p-1 g-2 align-items-center">
-                    <div class="col-auto">
-                        <div class="btn-group btn-group-sm">
-                            <button type="button" class="btn btn-secondary" disabled data-action="delete" data-type
-                                title="Delete">
-                                <!-- <i class="fas fa-times"></i> -->
-                                <!-- <i class="bi bi-x-circle"></i> -->
-                                <i class="bi bi-x"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" disabled data-action="deleteall" data-type
-                                title="Delete all">
-                                <!-- <i class="fas fa-times-circle"></i> -->
-                                <i class="bi bi-x-circle"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" disabled data-action="save" data-type
-                                title="Save">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
-                                    <path d="M11 2H9v3h2z"/>
-                                    <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
-                                  </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="btn-group btn-group-sm justify-content-around"
-                            style="width: 350px; min-width: fit-content;">
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" checked disabled id="chkLabels">
-                                <label class="custom-control-label" for="chkLabels">
-                                    <i class="bi bi-file-font"></i>&nbsp;Annotation labels
-                                </label>
-                            </div>
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" checked disabled
-                                    id="chkMeasurements">
-                                <label class="custom-control-label" for="chkMeasurements">
-                                    <i class="bi bi-rulers"></i>&nbsp;Measurements
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="form-group mb-0">
-                            <div class="row g-2">
-                                <div class="col-auto">
-                                    <div class="form-floating" id="annotation-text-div" style="display: none">
-                                        <input type="text" class="form-control form-control-sm" disabled
-                                            id="annotation-text" placeholder="Label" />
-                                        <label for="annotation-text">Label</label>
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="form-floating" id="classification-text-div" style="display: none">
-                                        <input type="text" class="form-control form-control-sm" disabled
-                                            id="classification-text" placeholder="Classification" />
-                                        <label for="classification-text">Classification</label>
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="form-floating" id="txt-length-div" style="display: none">
-                                        <input type="text" class="form-control form-control-sm" disabled
-                                            id="txt-length" />
-                                        <label for="txt-length">Length</label>
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="form-floating" id="txt-area-div" style="display: none">
-                                        <input type="text" class="form-control form-control-sm" disabled
-                                            id="txt-area" />
-                                        <label for="txt-area">Area</label>
-                                    </div>
-                                </div>
-                                <div class="col-auto d-flex justify-content-center align-items-center">
-                                    <span class="annotation-helper-icon">
-                                        <i class="fas fa-spinner fa-spin"></i>
-                                        <span class="badge bg-success"><i class="fas fa-check"></i> Saved</span>
-                                        <span class="badge bg-danger"><i class="fas fa-times"></i> Error</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row viewer-row flex-grow-1">
-                    <div class="col p-0">
-                        <div id="viewer"></div>
-                    </div>
-                </div>
-            </div>
+            <input
+              id="color-picker-native"
+              type="color"
+              value="#78eb10"
+              class="color-picker px-2"
+            />
+            <input
+              id="color-picker-js"
+              type="button"
+              value=" "
+              class="btn btn-light"
+              style="width: 50px"
+            />
+          </div>
+          <input
+            id="color-picker-hidden"
+            type="hidden"
+            value="#78eb10"
+            class="color-picker"
+          />
         </div>
+        <div class="col d-flex flex-column vh-100">
+          <div class="row top-row p-1 g-2 align-items-center">
+            <div class="col-auto">
+              <div class="btn-group btn-group-sm">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  disabled
+                  data-action="delete"
+                  data-type
+                  title="Delete"
+                >
+                  <!-- <i class="fas fa-times"></i> -->
+                  <!-- <i class="bi bi-x-circle"></i> -->
+                  <i class="bi bi-x"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  disabled
+                  data-action="deleteall"
+                  data-type
+                  title="Delete all"
+                >
+                  <!-- <i class="fas fa-times-circle"></i> -->
+                  <i class="bi bi-x-circle"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  disabled
+                  data-action="save"
+                  data-type
+                  title="Save"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-floppy"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M11 2H9v3h2z" />
+                    <path
+                      d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div
+                class="btn-group btn-group-sm justify-content-around"
+                style="width: 350px; min-width: fit-content"
+              >
+                <div class="custom-control custom-switch">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    checked
+                    disabled
+                    id="chkLabels"
+                  />
+                  <label class="custom-control-label" for="chkLabels">
+                    <i class="bi bi-file-font"></i>&nbsp;Annotation labels
+                  </label>
+                </div>
+                <div class="custom-control custom-switch">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    checked
+                    disabled
+                    id="chkMeasurements"
+                  />
+                  <label class="custom-control-label" for="chkMeasurements">
+                    <i class="bi bi-rulers"></i>&nbsp;Measurements
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="form-group mb-0">
+                <div class="row g-2">
+                  <div class="col-auto">
+                    <div
+                      class="form-floating"
+                      id="annotation-text-div"
+                      style="display: none"
+                    >
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        disabled
+                        id="annotation-text"
+                        placeholder="Label"
+                      />
+                      <label for="annotation-text">Label</label>
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <div
+                      class="form-floating"
+                      id="classification-text-div"
+                      style="display: none"
+                    >
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        disabled
+                        id="classification-text"
+                        placeholder="Classification"
+                      />
+                      <label for="classification-text">Classification</label>
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <div
+                      class="form-floating"
+                      id="txt-length-div"
+                      style="display: none"
+                    >
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        disabled
+                        id="txt-length"
+                      />
+                      <label for="txt-length">Length</label>
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <div
+                      class="form-floating"
+                      id="txt-area-div"
+                      style="display: none"
+                    >
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        disabled
+                        id="txt-area"
+                      />
+                      <label for="txt-area">Area</label>
+                    </div>
+                  </div>
+                  <div
+                    class="col-auto d-flex justify-content-center align-items-center"
+                  >
+                    <span class="annotation-helper-icon">
+                      <i class="fas fa-spinner fa-spin"></i>
+                      <span class="badge bg-success"
+                        ><i class="fas fa-check"></i> Saved</span
+                      >
+                      <span class="badge bg-danger"
+                        ><i class="fas fa-times"></i> Error</span
+                      >
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row viewer-row flex-grow-1">
+            <div class="col p-0">
+              <div id="viewer"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

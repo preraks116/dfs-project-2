@@ -1,109 +1,109 @@
 html,
 body {
-    height: 100%;
-    padding: 0px;
-    margin: 0px;
-    overflow: hidden;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
 }
 
 body .pma-ui-viewport-container {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 .aligned-text {
-    display: inline-block;
-    text-align: right;
-    width: 70px;
+  display: inline-block;
+  text-align: right;
+  width: 70px;
 }
 
 .annotation-helper-icon i,
 .annotation-helper-icon span {
-    display: none;
+  display: none;
 }
 
 .annotation-helper-icon.loading i {
-    display: initial;
+  display: initial;
 }
 
 .annotation-helper-icon.loading span {
-    display: none;
+  display: none;
 }
 
 .annotation-helper-icon.saved i,
 .annotation-helper-icon.saved span.badge.bg-danger {
-    display: none;
+  display: none;
 }
 
 .annotation-helper-icon.saved span.badge.bg-success {
-    display: initial;
+  display: initial;
 }
 
 .annotation-helper-icon.error i,
 .annotation-helper-icon.error span.badge.bg-success {
-    display: none;
+  display: none;
 }
 
 .annotation-helper-icon.error span.badge.bg-danger {
-    display: block;
+  display: block;
 }
 
 .annotations {
-    margin: 0 auto;
-    padding: 0;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .color-picker {
-    height: 35px;
-    margin-bottom: 1px;
-    border: none;
+  height: 35px;
+  margin-bottom: 1px;
+  border: none;
 }
 
 .top-row,
 #color-picker-native,
 .annotations {
-    background-color: #f8f9fa;
+  background-color: #f8f9fa;
 }
 
 .top-row {
-    min-height: 74px;
+  min-height: 74px;
 }
 
 .btn.btn-light.active {
-    background-color: #d2d2d2;
+  background-color: #d2d2d2;
 }
 
 .btn:disabled {
-    cursor: not-allowed;
-    pointer-events: unset;
+  cursor: not-allowed;
+  pointer-events: unset;
 }
 
 .dropdown-divider.horizontal {
-    height: 1px !important;
-    width: 80% !important;
-    margin: 0.5rem auto !important;
+  height: 1px !important;
+  width: 80% !important;
+  margin: 0.5rem auto !important;
 }
 
 .fa-stack-1x.small {
-    left: 1em;
-    top: -1em;
-    font-size: 0.5em;
+  left: 1em;
+  top: -1em;
+  font-size: 0.5em;
 }
 
 #snapdiv {
-    /* left: 20px; */
-    right: -1000px;
-    z-index: 1000;
-    /* visibility: hidden; */
-    position: absolute;
+  /* left: 20px; */
+  right: -1000px;
+  z-index: 1000;
+  /* visibility: hidden; */
+  position: absolute;
 
-    background-color: white;
+  background-color: white;
 }
 
 #filters {
-    position: absolute;
-    z-index: 1000;
-    right: 20px;
-    bottom: 20px;
-    background-color: white;
+  position: absolute;
+  z-index: 1000;
+  right: 20px;
+  bottom: 20px;
+  background-color: white;
 }

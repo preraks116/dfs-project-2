@@ -48,6 +48,7 @@ export interface IEbookHeaderData {
   title: string;
   date: string;
   author: IAuthor;
+  thumbnail: string;
   description: string;
   category: string;
 }
@@ -71,7 +72,6 @@ export interface INavbar {
   changeTheme?: () => void;
   openSidebar: boolean;
   navSetup: INavSetup;
-  onShareClick: () => void;
 }
 /**
  * @description Type description for blog header data

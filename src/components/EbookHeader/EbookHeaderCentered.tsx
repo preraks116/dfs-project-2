@@ -1,19 +1,13 @@
 import Link from "next/link";
-import { ICaseHeaderData } from "../../shared/interfaces";
+import { IEbookHeaderData } from "../../shared/interfaces";
 import { combineClasses } from "../../utils/utils";
 import CardTags from "../Misc/CardTags";
-import classes from "./CaseHeader.module.scss";
+import classes from "./EbookHeader.module.scss";
 
 interface IProps {
-  headerData: ICaseHeaderData;
+  headerData: IEbookHeaderData;
 }
-
-/**
- * 
- * @param param0 header data to render
- * @returns  a case header component
- */
-const CaseHeaderCentered = ({ headerData }: IProps) => {
+const EbookHeaderCentered = ({ headerData }: IProps) => {
   return (
     <div className="mb-[30px]">
       <h1
@@ -47,9 +41,8 @@ const CaseHeaderCentered = ({ headerData }: IProps) => {
 
         <p className="my-0">{headerData.date}</p>
       </div>
-      <CardTags tags={headerData.tags} center />
     </div>
   );
 };
 
-export default CaseHeaderCentered;
+export default EbookHeaderCentered;

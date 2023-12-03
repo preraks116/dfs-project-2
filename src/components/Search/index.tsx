@@ -26,7 +26,7 @@ const Search = ({ closeSearch }: ISearch) => {
           .join()
           .indexOf(searchStr.toLocaleLowerCase()) >= 0 ||
         article.preview.title.indexOf(searchStr.toLocaleLowerCase()) >= 0 ||
-        article.preview.category.indexOf(searchStr.toLocaleLowerCase()) >= 0
+        article.preview.category.indexOf(searchStr.toLocaleLowerCase()) >= 0,
     );
     setSearchResults(results);
   };
@@ -35,7 +35,7 @@ const Search = ({ closeSearch }: ISearch) => {
     <div
       className={combineClasses(
         "bg-slate-100 text-black dark:bg-slate-900 dark:text-white",
-        classes?.search_container
+        classes?.search_container,
       )}
     >
       <div className="container mx-auto">
