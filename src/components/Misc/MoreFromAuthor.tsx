@@ -10,6 +10,11 @@ import LinkTo from "../LinkTo";
 import Avatar from "./Avatar";
 import SocialShare from "../SocialShare/SocialShare";
 
+/**
+ * @description renders a more from author component which displays the author's bio, socials and related articles
+ * @param param0 author, related articles, article grid
+ * @returns More from author component
+ */
 const MoreFromAuthor = ({
   author,
   relatedArticles,

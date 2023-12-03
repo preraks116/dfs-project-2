@@ -4,6 +4,10 @@ import { AiFillTwitterCircle, AiFillFacebook } from "react-icons/ai";
 import { WEBSITE_URL } from "../../../constants/_APP_SETUP";
 import { combineClasses } from "../../utils/utils";
 
+/**
+ * @description renders a social share component
+ * @returns a social share component
+ */
 const SocialShare = () => {
   const url =
     typeof window !== "undefined" ? window.location.href : WEBSITE_URL;

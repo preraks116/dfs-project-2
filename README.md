@@ -1,48 +1,51 @@
-![blog-template-using-nextjs-typescript-tailwindcss](/public/images/og-image.jpg)
+# HistoPathoBook: A React-based Histopathology E-book viewer
 
-# Starter blog template using Nextjs, Typescript and Tailwind CSS.
+**The histopathology E-book application is a [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/) based website application that allows users to view published e-books and view the high-resolution slide for each case study.**
 
-This is a [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/) blogging starter template. Probably the most feature-rich Next.js markdown blogging template out there. Comes out of the box configured with the latest technologies to make technical writing a breeze. Easily configurable and customizable. Perfect as a replacement to existing Jekyll and Hugo individual blogs.
+The application consists of a collection of **E-books** where each e-book is a collection of **case studies**.
 
-This is a starter blog template using [Next.js](https://nextjs.org/), [Typescript](https://www.typescriptlang.org/) and [Tailwind CSS](https://tailwindcss.com/), a feature-rich Next.js component based blogging template. This template is configured with the latest technologies and has many versatile component which allows you to write your article with ease and also provide some design customization. Easily to configure and setup and it is completely static so there is no need to setup a server just export the project to create static file and deploy it on any static site hosting service. A good replacement to existing heavy wordpress or blogger websites.
+Each case study contains information about a particular type of cancer, both in textual form and the high-resolution image that can be viewed using the **Histopathology-viewer**.
 
-Check out the [demo website](https://nextjs-simple-blog-template.web.app/) for all the required documentation to get started.
-Feel free to open a new issue if none has been posted previously.
-Feature request? feel free to start a new discussion thread. We are open for all ideas and suggestions!
+## Application Features
 
-## Motivation
-
-We wanted to create and start a blog with as little investment as possible and the criteria was that it should be fast, static, easy to work on and no backend or server required, so we started working on a blog for ourself and in the middle we thought of making it in such a way that it is easy for others also including non techies to just simply download the code and start their own blog.
-
-We wanted to make it as feature rich as medium or dev.to, so we took some design ideas and inspirations from them and tried to make a template which suits our need and might help others too.
-
-In this template we have used Next.js SSG to create static HTML files which can be hosted on firebase or any static site hosting service. There is also options like vercel for hosting Next.js dynamic webistes but we wanted this template to be easy to use for any non techie person too, so we explored the option of static site generation.
-
-## Examples
-
-- [demo website](https://nextjs-simple-blog-template.web.app/) - this template
-- [webexpe.com](https://webexpe.com/)
-
-If you are using the template it will be great if you create a PR and add your blog to this list in readme file. It will motivate us to create more such projects.
-
-## Features
-
-- Easy styling customization with [Tailwind CSS](https://tailwindcss.com/).
-- Near perfect lighthouse and page speed insights score.
 - Fully responsive and mobile friendly.
 - Light and dark theme.
-- Support for multiple authors.
-- Minimilistic Blog templates, Default and Centered Layout and Components. You can check all the list of components [here](https://nextjs-simple-blog-template.web.app/tutorial/all-components/).
-- Static site generation.
-- Google analytics support.
-- SEO friendly including metadata, Open Graph tags with Next SEO.
+- Tag-based search for particular case studies.
+
+## Histopathology Viewer
+
+### Tools
+
+Magic Wand - Automatically selects an object or area of choice in the image
+
+- Brush - Fill area of choice and its area will be calculated
+- Freehand - Draw a line freehand and its length will be calculated
+- Freehand Polygon - Draw a freehand polygon and its area will be calculated
+- Closed Freehand Polygon - similar to lasso tool, use it to draw on selected area and the area will be calculated
+- Arrow tool - Draw an arrow to highlight a point of interest
+- Point - Place a point on the slide to mark its location
+- Line - Select two points and the distance between those two points is calculated
+- Multipoint - Mark multiple points under the same annotation
+- Subtract - All area of various annotations in the selected area will be removed. The boundaries of the annotations are changed and not removed completely.
+- Addition - Combines multiple annotations to make one highlighted annotation.
+- Transform - modify the dimensions of the annotations
+- Color Picker - Change the colors of the annotations
+
+### Features
+
+- Overview Window - A small window showing the slide and which section of the slide the user is currently zoomed in on. The window can be moved around.
+- Rotation Controls - Rotate the slides
+- Scale Line - Shows the current scale at which the user's zoom is.
+- Snapshot Options - Take a snapshot of the current view of the slide along with the annotations.
+- Realtime Filter Controls - Control filter options such as brightness, color balance, contrast and gamma of the image. These changes are visible in real time and will be visible in the snapshot taken.
+- Zoom Slider - Shows the current zoom on the image
+- Toggle Annotations and Measurements
+- Save - Save the currently made annotations
 
 ## Requirements
 
 - Node.js
 - NPM
-- VS Code for editing and writing your articles.
-- Imp VS Code plugins:[Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense) , [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 
 ## Quick Start Guide
 
@@ -60,16 +63,3 @@ npm start
 ```
 
 4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-5. Rest you can follow this article on [setting up your blog](https://nextjs-simple-blog-template.web.app/tutorial/how-to-setup-blog/).
-
-## Support
-
-This is an open source project and everyone is welcome to contribute. Feel free to open an issue, if you have any questions or incase you find a bug. Create your versions of this template and help the community, also if you are using our template a little credit will be much appreciated.
-
-Created by **[Rupali Yadav](https://www.linkedin.com/in/rupali-yadav-087bb4112/)** and **[Mayur Nalwala](https://www.linkedin.com/in/mayur-nalwala/)** from [WebExpe](https://webexpe.com/) with ♥
-
-<a href="https://www.buymeacoffee.com/webexpe13z" target="_blank">![support us](/public/images/bmc.png)</a>
-
-## Licence
-
-[MIT](https://github.com/webexpe13/blog-template-using-nextjs-typescript-tailwindcss/blob/main/LICENSE) © [Web Expe](https://www.webexpe.com)

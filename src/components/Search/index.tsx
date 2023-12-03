@@ -8,6 +8,12 @@ import { MdOutlineClose } from "react-icons/md";
 interface ISearch {
   closeSearch: () => void;
 }
+
+/**
+ * 
+ * @description component for rendering search page
+ * @returns search page
+ */
 const Search = ({ closeSearch }: ISearch) => {
   const [searchStr, setSearchStr] = useState("");
   const [searchResults, setSearchResults] = useState<any[]>([]);

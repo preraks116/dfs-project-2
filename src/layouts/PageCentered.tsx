@@ -5,6 +5,11 @@ import Seperator from "../components/Seperator";
 import CaseHeader from "../components/CaseHeader";
 import MoreFromAuthor from "../components/Misc/MoreFromAuthor";
 
+/**
+ * 
+ * @param param0 children components to render
+ * @returns a page with a centered article
+ */
 const PageCentered = ({ children }: any) => {
   const ARTICLE_DETAILS = getArticleDetails();
   const author = ARTICLE_DETAILS.preview.author;

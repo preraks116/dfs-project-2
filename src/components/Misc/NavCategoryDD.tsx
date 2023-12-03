@@ -8,7 +8,11 @@ interface INavCatergoryDD {
   label: string;
   floating?: boolean;
 }
-
+/**
+ * @description renders a nav category dropdown component
+ * @param param0 open dropdown, set open dropdown, label, floating
+ * @returns  a nav category dropdown component
+ */
 const NavCatergoryDD = ({
   openDD,
   setOpenDD,

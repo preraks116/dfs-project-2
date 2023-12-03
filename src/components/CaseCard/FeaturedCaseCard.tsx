@@ -14,7 +14,11 @@ interface IProp {
   content: ICaseHeaderData;
   path: string;
 }
-
+/**
+ * 
+ * @param param0 content to render, path to link to
+ * @returns  a case card component
+ */
 const FeaturedCaseCard = ({ content, path }: IProp) => {
   return (
     <>

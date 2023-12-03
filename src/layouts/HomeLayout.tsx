@@ -1,3 +1,7 @@
+/**
+ * @param param0 children components to render
+ * @returns the home page
+ */
 const HomeLayout = ({ children }: { children: any }) => {
   return (
     <>

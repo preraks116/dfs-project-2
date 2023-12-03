@@ -8,6 +8,11 @@ import "swiper/css/bundle";
 import classes from "./slider.module.scss";
 import { transformImagePaths } from "../../utils/utils";
 
+/**
+ * 
+ * @param param0 images to render
+ * @returns a slider component
+ */
 const Slider = ({
   images,
   className,

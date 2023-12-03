@@ -11,6 +11,11 @@ interface ICaseImage {
   className?: string;
 }
 
+/**
+ * 
+ * @param param0 src, caption, size, alt, className
+ * @returns  a case image component
+ */
 const CaseImage = ({
   src,
   caption,

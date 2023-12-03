@@ -15,7 +15,11 @@ interface IProp {
   content: ICaseHeaderData;
   path: string;
 }
-
+/**
+ * 
+ * @param param0 content to render, path to link to
+ * @returns  a case card component
+ */
 const CaseCard = ({ content, path }: IProp) => {
   const origin =
     typeof window !== "undefined" && window.location.origin

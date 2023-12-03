@@ -10,6 +10,11 @@ interface iLinkTo {
   className?: string;
 }
 
+/**
+ *  @description renders a link component
+ * @param param0 href to link to
+ * @returns  a link component
+ */
 const LinkTo = ({
   href,
   passHref = true,

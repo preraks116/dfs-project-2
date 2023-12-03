@@ -9,6 +9,12 @@ import NavCatergoryDD from "../Misc/NavCategoryDD";
 import { INavLink, INavSocials, INavbar } from "../../shared/interfaces";
 import { BsFillShareFill } from "react-icons/bs";
 
+/**
+ * 
+ * @param param0 search, side menu, sidebar, nav setup, share click
+ * @description renders a centred navbar component
+ * @returns centred navbar component
+ */
 const CenteredNavbar = ({
   openSearch,
   toggleSideMenu,

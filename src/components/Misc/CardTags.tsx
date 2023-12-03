@@ -1,5 +1,10 @@
 import { combineClasses } from "../../utils/utils";
 
+/**
+ * @description renders relevant tags for a given card
+ * @param param0 tags, center
+ * @returns tags for a card
+ */
 const CardTags = ({
   tags,
   center = false,

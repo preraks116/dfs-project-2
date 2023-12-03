@@ -1,6 +1,9 @@
 import { ICase } from "../src/shared/interfaces";
 import { AUTHORS_LIST } from "./_AUTHORS_LIST";
 
+/**
+ * @description List of all cases
+ */
 export const CASES_LIST: ICase[] = [
   {
     path: "/pages/ebooks/1-cancercare-insights/BC001.tsx",

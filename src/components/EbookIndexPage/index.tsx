@@ -7,6 +7,11 @@ import { useEffect, useState } from "react";
 import { IEbook } from "../../shared/interfaces";
 import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
 
+/**
+ * 
+ * @param param0 ebooks per page
+ * @returns  an ebook index page
+ */
 const EbookIndexPage = ({ ebooksPerPage = 6 }: { ebooksPerPage?: number }) => {
   const router = useRouter();
   const { category, author } = router.query;

@@ -1,6 +1,9 @@
 import { IAuthor } from "../src/shared/interfaces";
 import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 
+/**
+ * @description List of all authors
+ */
 export const AUTHORS_LIST: { [key: string]: IAuthor } = {
   JOHN: {
     name: "Dr. John Smith",

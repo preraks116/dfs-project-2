@@ -7,6 +7,11 @@ import { useEffect, useState } from "react";
 import { ICase } from "../../shared/interfaces";
 import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
 
+/**
+ *  @description renders a case index page
+ * @param param0 cases per page
+ * @returns  a case index page
+ */
 const CaseIndexPage = ({ casesPerPage = 6 }: { casesPerPage?: number }) => {
   const router = useRouter();
   const { category, author } = router.query;

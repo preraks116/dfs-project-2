@@ -7,6 +7,10 @@ import "react-medium-image-zoom/dist/styles.css";
 import Footer from "../src/components/Footer";
 import "../src/styles/globals.scss";
 
+/**
+ * @params Component: React.FC
+ * @return AppProps
+ */
 function MyApp({ Component, pageProps }: AppProps) {
   const [mounted, setMounted] = useState(false);
   const env = process.env.NODE_ENV;

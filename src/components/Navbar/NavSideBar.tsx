@@ -20,7 +20,11 @@ interface IProps {
   navSetup: INavSetup;
   changeTheme: () => void;
 }
-
+/**
+ * 
+ * @param param0 open sidebar, close sidebar, nav setup, change theme
+ * @returns  a nav sidebar component
+ */
 const NavSidebar = ({
   openSidebar = false,
   closeNavSidebar,

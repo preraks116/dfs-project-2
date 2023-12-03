@@ -2,6 +2,10 @@ import Link from "next/link";
 import { PageLayout, Text, List, Image, LinkTo } from "../../../src/components";
 import { ImageSize } from "../../../src/shared/enums";
 
+/**
+ * @description renders a case study page
+ * @returns a case study page
+ */
 const CaseStudy = () => {
   return (
     <PageLayout pagecentered>

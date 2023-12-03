@@ -3,6 +3,10 @@ import { PageLayout } from "../src/components";
 import CaseIndexPage from "../src/components/CaseIndexPage";
 import EbooksIndexPage from "../src/components/EbookIndexPage";
 
+/**
+ * 
+ * @returns the home page
+ */
 const Home = () => {
   const [mode, setMode] = useState("eBooks");
   const handleModeChange = () => {

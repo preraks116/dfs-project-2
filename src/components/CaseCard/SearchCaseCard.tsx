@@ -11,6 +11,11 @@ interface IProp {
   path: string;
 }
 
+/**
+ * 
+ * @param param0 content to render, path to link to
+ * @returns  a case card component
+ */
 const SerachCaseCard = ({ content, path }: IProp) => (
   <div className="w-full lg:w-1/3 md:w-1/2 px-3 mb-10">
     <LinkTo href={path} passHref={true}>

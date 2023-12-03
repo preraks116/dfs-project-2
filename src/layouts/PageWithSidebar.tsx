@@ -4,6 +4,11 @@ import { SORTED_CASES_BY_DATE } from "../../constants/_CASES_LIST";
 import CaseHeader from "../components/CaseHeader";
 import MoreFromAuthor from "../components/Misc/MoreFromAuthor";
 
+/**
+ * @param param0 takes in children and ads
+ * @description renders a page with a sidebar
+ * @returns a page with a sidebar
+ */
 const PageWithSidebar = ({
   children,
   ads,

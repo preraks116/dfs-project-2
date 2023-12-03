@@ -3,8 +3,10 @@ import Head from "next/head";
 import Script from "next/script";
 import { Helmet } from "react-helmet";
 
-// import from react-load-script
-
+/**
+ * @description Imports all the required scripts for the viewer
+ * @returns the viewer page
+ */
 const Viewer: React.FC = () => {
   return (
     <>

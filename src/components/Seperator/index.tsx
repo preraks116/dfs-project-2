@@ -6,6 +6,11 @@ interface iProps {
   dots?: boolean;
 }
 
+/**
+ * 
+ * @param param0 line or dots
+ * @returns a seperator component with separator line or dots
+ */
 const Seperator = ({ line = false, dots = false }: iProps) => {
   return (
     <>

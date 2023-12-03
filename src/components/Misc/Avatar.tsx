@@ -1,6 +1,11 @@
 import { IAuthor } from "../../shared/interfaces";
 import { combineClasses } from "../../utils/utils";
 
+/**
+ * 
+ * @param param0 author, class name
+ * @returns  an avatar component which displays the author's profile picture or name
+ */
 const Avatar = ({
   author,
   className,

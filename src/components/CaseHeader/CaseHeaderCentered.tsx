@@ -7,6 +7,12 @@ import classes from "./CaseHeader.module.scss";
 interface IProps {
   headerData: ICaseHeaderData;
 }
+
+/**
+ * 
+ * @param param0 header data to render
+ * @returns  a case header component
+ */
 const CaseHeaderCentered = ({ headerData }: IProps) => {
   return (
     <div className="mb-[30px]">

@@ -1,6 +1,8 @@
 import { IEbook } from "../src/shared/interfaces";
 import { AUTHORS_LIST } from "./_AUTHORS_LIST";
-
+/**
+ * @description List of all ebooks
+ */
 export const EBOOKS_LIST: IEbook[] = [
   {
     path: "/pages/ebooks/ebook-1-cancerous-insights",

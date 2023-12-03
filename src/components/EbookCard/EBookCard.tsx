@@ -7,7 +7,11 @@ interface IProp {
   content: IEbookHeaderData;
   path: string;
 }
-
+/**
+ * 
+ * @param param0 content to render, path to link to
+ * @returns  a ebook card component
+ */
 const EBookCard = ({ content, path }: IProp) => {
   return (
     <>

@@ -1,6 +1,10 @@
 import { WEBSITE_NAME } from "../../../constants/_APP_SETUP";
 import LinkTo from "../LinkTo";
 
+/**
+ * @description renders a footer component
+ * @returns a footer component
+ */
 const Footer = () => {
   const year = new Date().getFullYear();
 

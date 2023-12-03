@@ -10,6 +10,11 @@ import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import NavCatergoryDD from "../Misc/NavCategoryDD";
 import { INavbar, INavLink, INavSocials } from "../../shared/interfaces";
 
+/**
+ * 
+ * @param param0 search, theme, side menu, sidebar, nav setup, share click
+ * @returns  a simple navbar component
+ */
 const SimpleNavbar = ({
   openSearch,
   changeTheme,

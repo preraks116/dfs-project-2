@@ -10,6 +10,14 @@ interface IPageLayout {
   home?: boolean;
 }
 
+/**
+ * 
+ * @param param0 children components to render
+ * @param pagewithsidebar boolean to render a page with a sidebar
+ * @param pagecentered boolean to render a page with a centered article
+ * @param home boolean to render a home page
+ * @returns a page with a sidebar, a page with a centered article, or a home page
+ */
 const PageLayout = ({
   children,
   pagewithsidebar = false,

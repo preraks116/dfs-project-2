@@ -1,5 +1,10 @@
 import LinkTo from "../LinkTo";
 
+/**
+ * @description renders a card category component for E-books
+ * @param param0 category to render
+ * @returns  a card category component
+ */
 const CardCategories = ({ category }: { category?: string }) => {
   return (
     <>

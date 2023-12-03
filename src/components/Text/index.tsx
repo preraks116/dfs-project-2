@@ -14,6 +14,12 @@ interface IProps {
   id?: string;
 }
 
+/**
+ * 
+ * @param param0 children components to render
+ * @description renders a text component
+ * @returns a text component
+ */
 const Text = ({
   children,
   color,

@@ -16,6 +16,10 @@ import { useTheme } from "next-themes";
 import classes from "./Navbar.module.scss";
 import SocialShareModal from "../SocialShare/SocialShareModal";
 
+/**
+ * @description renders the navbar component inside which centredNavbar
+ * @returns a navbar component
+ */
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const [isMobile, setIsMobile] = useState(false);
