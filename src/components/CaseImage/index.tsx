@@ -1,7 +1,7 @@
-import classes from "./CaseImage.module.scss";
 import { ImageSize } from "../../shared/enums";
 import { combineClasses, transformImagePaths } from "../../utils/utils";
 import Zoom from "react-medium-image-zoom";
+import classes from "./CaseImage.module.scss";
 
 interface ICaseImage {
   src: string;

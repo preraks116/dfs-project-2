@@ -27,6 +27,7 @@ export interface IEbookHeaderData {
   title: string;
   date: string;
   author: IAuthor;
+  thumbnail: string;
   description: string;
   category: string;
 }
