@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { combineClasses } from "../../utils/utils";
 import classes from "./Search.module.scss";
-import SearchArticleCard from "../ArticleCards/SearchArticleCard";
-import { SORTED_ARTICLES_BY_DATE } from "../../../BLOG_CONSTANTS/_CASES_LIST";
+import SearchArticleCard from "../CaseCard/SearchCaseCard";
+import { SORTED_CASES_BY_DATE } from "../../../constants/_CASES_LIST";
 import { MdOutlineClose } from "react-icons/md";
 
 interface ISearch {
@@ -12,7 +12,7 @@ const Search = ({ closeSearch }: ISearch) => {
   const [searchStr, setSearchStr] = useState("");
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const handleSearch = () => {
-    const data = [...SORTED_ARTICLES_BY_DATE];
+    const data = [...SORTED_CASES_BY_DATE];
     const results = data.filter(
       (article) =>
         article.preview.tags
@@ -62,7 +62,7 @@ const Search = ({ closeSearch }: ISearch) => {
             {searchResults?.length > 0 &&
               searchResults?.map((article, i) => (
                 <SearchArticleCard
-                  article={article.preview}
+                  content={article.preview}
                   key={i}
                   path={article.path}
                 />

@@ -1,4 +1,4 @@
-import { WEBSITE_NAME } from "../../../BLOG_CONSTANTS/_APP_SETUP";
+import { WEBSITE_NAME } from "../../../constants/_APP_SETUP";
 import LinkTo from "../LinkTo";
 
 const Footer = () => {

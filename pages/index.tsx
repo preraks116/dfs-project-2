@@ -1,8 +1,7 @@
-/**These are necessary imports / components for the page */
-import { PageLayout } from "../src/components";
-import BlogIndexPage from "../src/components/BlogIndexPage";
-import EbooksIndexPage from "../src/components/EbooksIndexPage";
 import { useState } from "react";
+import { PageLayout } from "../src/components";
+import CaseIndexPage from "../src/components/CaseIndexPage";
+import EbooksIndexPage from "../src/components/EbookIndexPage";
 
 const Home = () => {
   const [mode, setMode] = useState("eBooks");
@@ -27,7 +26,7 @@ const Home = () => {
           {mode === "eBooks" ? (
             <EbooksIndexPage ebooksPerPage={6} />
           ) : (
-            <BlogIndexPage articlesPerPage={6} />
+            <CaseIndexPage casesPerPage={6} />
           )}
         </div>
       </div>

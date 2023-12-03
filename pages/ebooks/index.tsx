@@ -1,7 +1,7 @@
-import BlogIndexPage from "../../src/components/BlogIndexPage";
+import CaseIndexPage from "../../src/components/CaseIndexPage";
 
-const AllArticles = () => {
-  return <BlogIndexPage articlesPerPage={6} />;
+const AllCases = () => {
+  return <CaseIndexPage casesPerPage={6} />;
 };
 
-export default AllArticles;
+export default AllCases;

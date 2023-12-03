@@ -20,7 +20,6 @@ export interface ICaseHeaderData {
 
 export interface ICase {
   path: string;
-  featureArticle?: boolean;
   preview: ICaseHeaderData;
 }
 
@@ -34,7 +33,7 @@ export interface IEbookHeaderData {
 
 export interface IEbook {
   path: string;
-  header: IEbookHeaderData;
+  preview: IEbookHeaderData;
 }
 
 export interface INavbar {

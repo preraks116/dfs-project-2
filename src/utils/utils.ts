@@ -1,8 +1,8 @@
 import { THEMES } from "../shared/enums";
 import { useRouter } from "next/router";
-import { SORTED_ARTICLES_BY_DATE } from "../../BLOG_CONSTANTS/_CASES_LIST";
+import { SORTED_CASES_BY_DATE } from "../../constants/_CASES_LIST";
 import { ICase } from "../shared/interfaces";
-import { CASES_LIST } from "../../BLOG_CONSTANTS/_CASES_LIST";
+import { CASES_LIST } from "../../constants/_CASES_LIST";
 
 // env
 const env = process.env.NODE_ENV;
@@ -106,7 +106,7 @@ export const getArticleDetails = (): ICase => {
   const articlePath = "/pages" + router.pathname + ".tsx";
   return (
     CASES_LIST.filter((each) => each.path.includes(articlePath))[0] ||
-    SORTED_ARTICLES_BY_DATE.filter((each) => each.path.includes(articlePath))[0]
+    SORTED_CASES_BY_DATE.filter((each) => each.path.includes(articlePath))[0]
   );
 };
 
@@ -116,7 +116,7 @@ export const getArticleDetails = (): ICase => {
  */
 export const getCategories = (): string[] => {
   let categories: string[] = [];
-  SORTED_ARTICLES_BY_DATE.forEach((each) => {
+  SORTED_CASES_BY_DATE.forEach((each) => {
     if (each.preview.category && !categories.includes(each.preview.category)) {
       categories.push(each.preview.category);
     }

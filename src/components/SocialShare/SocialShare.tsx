@@ -1,9 +1,8 @@
+import { useEffect, useState } from "react";
 import { BsLinkedin, BsLink45Deg, BsXLg } from "react-icons/bs";
 import { AiFillTwitterCircle, AiFillFacebook } from "react-icons/ai";
-import { WEBSITE_URL } from "../../../BLOG_CONSTANTS/_APP_SETUP";
+import { WEBSITE_URL } from "../../../constants/_APP_SETUP";
 import { combineClasses } from "../../utils/utils";
-import { useEffect, useState } from "react";
-import { GAEvent } from "../../../google";
 
 const SocialShare = () => {
   const url =
@@ -13,21 +12,11 @@ const SocialShare = () => {
   const facebookShare = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
   const linkedinShare = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=Check out this article!!&source=LinkedIn`;
 
-  const trackShareEvent = (social: string) => {
-    GAEvent({
-      action: "share_clicked",
-      event_category: "click",
-      label: social,
-      value: null,
-    });
-  };
-
   const copyLink = () => {
     if (typeof window !== "undefined" && navigator) {
       navigator.clipboard.writeText(url);
       setShowCopiedAlert(true);
     }
-    trackShareEvent("copy_clipboard_clicked");
   };
 
   const [showCopiedAlert, setShowCopiedAlert] = useState(false);
@@ -49,7 +38,6 @@ const SocialShare = () => {
           href={facebookShare}
           onClick={() => {
             window.open(facebookShare, "popup", "width=300,height=500");
-            trackShareEvent("facebook_share_clicked");
             return false;
           }}
           target="popup"
@@ -62,7 +50,6 @@ const SocialShare = () => {
           href={twitterShare}
           onClick={() => {
             window.open(twitterShare, "popup", "width=600,height=500");
-            trackShareEvent("twitter_share_clicked");
             return false;
           }}
           target="popup"
@@ -75,7 +62,6 @@ const SocialShare = () => {
           href={linkedinShare}
           onClick={() => {
             window.open(linkedinShare, "popup", "width=500,height=500");
-            trackShareEvent("linkedin_share_clicked");
             return false;
           }}
           target="popup"

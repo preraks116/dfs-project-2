@@ -1,12 +1,11 @@
-import "../src/styles/globals.scss";
-import type { AppProps } from "next/app";
-import Head from "next/head";
-import Footer from "../src/components/Footer";
 import { useEffect, useState } from "react";
+import Head from "next/head";
+import type { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
-
 import "@uiw/react-textarea-code-editor/dist.css";
 import "react-medium-image-zoom/dist/styles.css";
+import Footer from "../src/components/Footer";
+import "../src/styles/globals.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [mounted, setMounted] = useState(false);

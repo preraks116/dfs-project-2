@@ -1,15 +1,14 @@
 import { IEbookHeaderData } from "../../shared/interfaces";
-import classes from "./ArticleCard.module.scss";
+import classes from "./EbookCard.module.scss";
 import { combineClasses, transformPath } from "../../utils/utils";
 import LinkTo from "../LinkTo";
-import ArticleCardCategory from "../Misc/ArticleCardCategory";
 
 interface IProp {
-  ebook: IEbookHeaderData;
+  content: IEbookHeaderData;
   path: string;
 }
 
-const EBookCard = ({ ebook, path }: IProp) => {
+const EBookCard = ({ content, path }: IProp) => {
   return (
     <>
       <div
@@ -23,14 +22,14 @@ const EBookCard = ({ ebook, path }: IProp) => {
             "w-full md:w-[55%] lg:px-[50px] px-[15px] lg:py-[40px] py-[20px]"
           }
         >
-          <LinkTo href={"/ebooks/?category=" + ebook.category} passHref>
+          <LinkTo href={"/ebooks/?category=" + content.category} passHref>
             <h1
               className={combineClasses(
                 classes.featured_article__title,
                 "text-[24px] font-bold mt-0 mb-[10px]"
               )}
             >
-              {ebook.title}
+              {content.title}
             </h1>
           </LinkTo>
           <p
@@ -39,7 +38,7 @@ const EBookCard = ({ ebook, path }: IProp) => {
               "text-[14px] font-regular mt-0 mb-[10px]"
             )}
           >
-            {ebook.description.slice(0, 150)} ...
+            {content.description.slice(0, 150)} ...
           </p>
           <p
             className={combineClasses(
@@ -47,7 +46,7 @@ const EBookCard = ({ ebook, path }: IProp) => {
               "font-normal text-xs pt-3 mb-0"
             )}
           >
-            {ebook.date}
+            {content.date}
           </p>
         </div>
       </div>
