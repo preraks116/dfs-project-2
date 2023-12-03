@@ -16,7 +16,6 @@ const SimpleNavbar = ({
   toggleSideMenu,
   openSidebar = false,
   navSetup,
-  onShareClick,
 }: INavbar) => {
   const { navLinks, logo } = navSetup;
   const [openDD, setOpenDD] = useState(false);
@@ -27,7 +26,7 @@ const SimpleNavbar = ({
       className={combineClasses(
         classes.navbar__container,
         "container flex items-center justify-between",
-        "px-2",
+        "px-2"
       )}
     >
       <div className="flex items-center">
@@ -35,7 +34,7 @@ const SimpleNavbar = ({
           className={combineClasses(
             classes.mobileBurgerToggle,
             "mr-5",
-            openSidebar ? classes.mobileBurgerToggle__close : " ",
+            openSidebar ? classes.mobileBurgerToggle__close : " "
           )}
           onClick={() => toggleSideMenu()}
         >
@@ -90,14 +89,14 @@ const SimpleNavbar = ({
                 setOpenDD={() => setOpenDD(!openDD)}
                 floating
               />
-            ),
+            )
           )}
         </div>
 
         <div
           className={combineClasses(
             classes.search_icon_wrapper,
-            "ml-5 dark:text-white",
+            "ml-5 dark:text-white"
           )}
           onClick={() => openSearch()}
         >
@@ -106,18 +105,12 @@ const SimpleNavbar = ({
           </button>
         </div>
 
-        <div className="" onClick={() => onShareClick()}>
-          <button name="share" aria-label="share page">
-            <BsFillShareFill className="dark:text-white text-black text-[16px] mt-[7px] ml-2 mr-1" />
-          </button>
-        </div>
-
         <button
           name="theme-switch"
           aria-label="theme button"
           className={combineClasses(
             classes.theme_switch,
-            "pl-3 dark:text-white text-black",
+            "pl-3 dark:text-white text-black"
           )}
           onClick={changeTheme}
         >

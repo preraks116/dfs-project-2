@@ -11,10 +11,10 @@ const Home = () => {
 
   return (
     <PageLayout home>
-      <div className="container mx-auto lg:px-[15px] px-0">
+      <div className="container mx-auto mt-5 lg:px-[20px] px-3">
         <div className="flex justify-center">
           <button
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+            className="bg-gray-100 hover:bg-gray-300 text-gray-800 font-bold px-4 py-2 rounded items-center"
             onClick={handleModeChange}
           >
             <span className="mr-2">
