@@ -19,7 +19,7 @@ const EbookCard = ({ content, path }: IProp) => {
       <div
         className={combineClasses(
           classes.featured_article,
-          "md:border-l-[5px] border-b-[5px] md:border-b-0 border-blue-500 dark:bg-slate-800 dark:text-white dark:drop-shadow-lg cursor-pointer"
+          "md:border-l-[5px] border-b-[5px] md:border-b-0 border-blue-500 dark:bg-slate-800 dark:text-white dark:drop-shadow-lg cursor-pointer",
         )}
       >
         <div
@@ -38,7 +38,7 @@ const EbookCard = ({ content, path }: IProp) => {
                 passHref
                 className={combineClasses(
                   classes.author_name,
-                  "text-[14px] md:text-[16px] my-0 font-medium"
+                  "text-[14px] md:text-[16px] my-0 font-medium",
                 )}
               >
                 {content.author.name}
@@ -49,7 +49,7 @@ const EbookCard = ({ content, path }: IProp) => {
             <h1
               className={combineClasses(
                 classes.featured_article__title,
-                "text-[24px] font-bold mt-0 mb-[10px]"
+                "text-[24px] font-bold mt-0 mb-[10px]",
               )}
             >
               {content.title}
@@ -58,7 +58,7 @@ const EbookCard = ({ content, path }: IProp) => {
           <p
             className={combineClasses(
               classes.featured_article__intro,
-              "text-[14px] font-regular mt-0 mb-[10px]"
+              "text-[14px] font-regular mt-0 mb-[10px]",
             )}
           >
             {content.description}
@@ -66,7 +66,7 @@ const EbookCard = ({ content, path }: IProp) => {
           <p
             className={combineClasses(
               classes.featured_article__date,
-              "font-normal text-xs pt-3 mb-0"
+              "font-normal text-xs pt-3 mb-0",
             )}
           >
             {content.date}
@@ -75,7 +75,7 @@ const EbookCard = ({ content, path }: IProp) => {
         <div
           className={combineClasses(
             classes.featured_article__image,
-            "rounded-sm overflow-hidden"
+            "rounded-sm overflow-hidden",
           )}
         >
           <img

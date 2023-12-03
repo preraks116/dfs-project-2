@@ -12,7 +12,7 @@ const Avatar = ({
     <div
       className={combineClasses(
         `flex items-center justify-center shadow-xl rounded-full overflow-hidden bg-blue-500 shrink-0`,
-        className
+        className,
       )}
     >
       {author.profilePic ? (

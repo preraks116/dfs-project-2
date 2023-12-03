@@ -11,17 +11,17 @@ const CaseIndexPage = ({ casesPerPage = 6 }: { casesPerPage?: number }) => {
   const router = useRouter();
   const { category, author } = router.query;
   const categoryCases = SORTED_CASES_BY_DATE.filter(
-    (each) => each.preview.category === category
+    (each) => each.preview.category === category,
   );
   const authorCases = SORTED_CASES_BY_DATE.filter(
-    (each) => each.preview.author.name === author
+    (each) => each.preview.author.name === author,
   );
 
   const [CASES, setCASES] = useState(SORTED_CASES_BY_DATE);
 
   useEffect(() => {
     setCASES(
-      category ? categoryCases : author ? authorCases : SORTED_CASES_BY_DATE
+      category ? categoryCases : author ? authorCases : SORTED_CASES_BY_DATE,
     );
   }, [category, author]);
 
@@ -44,7 +44,7 @@ const CaseIndexPage = ({ casesPerPage = 6 }: { casesPerPage?: number }) => {
     <div
       className={combineClasses(
         "container mt-10 md:pt-0 px-0 md:px-3",
-        category ? "pt-10" : "pt-14"
+        category ? "pt-10" : "pt-14",
       )}
     >
       {category || author ? (

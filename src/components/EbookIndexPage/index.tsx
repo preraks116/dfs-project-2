@@ -11,17 +11,17 @@ const EbookIndexPage = ({ ebooksPerPage = 6 }: { ebooksPerPage?: number }) => {
   const router = useRouter();
   const { category, author } = router.query;
   const categoryEbooks = SORTED_EBOOKS_BY_DATE.filter(
-    (each) => each.preview.category === category
+    (each) => each.preview.category === category,
   );
   const authorEbooks = SORTED_EBOOKS_BY_DATE.filter(
-    (each) => each.preview.author.name === author
+    (each) => each.preview.author.name === author,
   );
 
   const [EBOOKS, setEBOOKS] = useState(SORTED_EBOOKS_BY_DATE);
 
   useEffect(() => {
     setEBOOKS(
-      category ? categoryEbooks : author ? authorEbooks : SORTED_EBOOKS_BY_DATE
+      category ? categoryEbooks : author ? authorEbooks : SORTED_EBOOKS_BY_DATE,
     );
   }, [category, author]);
 
@@ -44,7 +44,7 @@ const EbookIndexPage = ({ ebooksPerPage = 6 }: { ebooksPerPage?: number }) => {
     <div
       className={combineClasses(
         "container mt-10 md:pt-0 px-0 md:px-3",
-        category ? "pt-10" : "pt-14"
+        category ? "pt-10" : "pt-14",
       )}
     >
       {category || author ? (

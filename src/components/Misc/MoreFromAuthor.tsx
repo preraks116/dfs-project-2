@@ -58,7 +58,7 @@ const MoreFromAuthor = ({
                 <div
                   className={combineClasses(
                     "mb-3 cursor-pointer",
-                    articleGrid ? "lg:w-1/3 md:w-1/2 w-full md:pr-2" : "w-full"
+                    articleGrid ? "lg:w-1/3 md:w-1/2 w-full md:pr-2" : "w-full",
                   )}
                   key={each.path}
                 >

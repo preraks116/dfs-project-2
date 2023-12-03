@@ -135,5 +135,5 @@ export const CASES_LIST: ICase[] = [
 ];
 
 export const SORTED_CASES_BY_DATE = CASES_LIST.sort((a, b) =>
-  new Date(a.preview.date) > new Date(b.preview.date) ? -1 : 1
+  new Date(a.preview.date) > new Date(b.preview.date) ? -1 : 1,
 );

@@ -33,7 +33,7 @@ const CaseCard = ({ content, path }: IProp) => {
         passHref
         className={combineClasses(
           classes.case_card,
-          "border-b-[5px] border-blue-500 dark:bg-slate-800 dark:text-white dark:drop-shadow-lg flex flex-col justify-between"
+          "border-b-[5px] border-blue-500 dark:bg-slate-800 dark:text-white dark:drop-shadow-lg flex flex-col justify-between",
         )}
       >
         <div>
@@ -64,7 +64,7 @@ const CaseCard = ({ content, path }: IProp) => {
             <p
               className={combineClasses(
                 classes.case_card__intro,
-                "text-sm font-normal mt-2 md:mt-1"
+                "text-sm font-normal mt-2 md:mt-1",
               )}
             >
               {content.description.slice(0, 100)} ...
@@ -75,7 +75,7 @@ const CaseCard = ({ content, path }: IProp) => {
         <div
           className={combineClasses(
             classes.case_card_footer,
-            "mt-4 mb-3 flex items-center px-3"
+            "mt-4 mb-3 flex items-center px-3",
           )}
         >
           <div className={"flex items-center"}>
@@ -88,7 +88,7 @@ const CaseCard = ({ content, path }: IProp) => {
               passHref
               className={combineClasses(
                 classes.author_name,
-                "text-sm font-medium"
+                "text-sm font-medium",
               )}
             >
               {content.author.name}
