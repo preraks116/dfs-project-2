@@ -24,7 +24,7 @@ interface IProp {
  */
 
 const EBookCard = ({ content }: { content : any[] }) => {
-  // console.log(content);
+  console.log(content);
   return (
     <>
       <div
@@ -56,7 +56,7 @@ const EBookCard = ({ content }: { content : any[] }) => {
               </LinkTo>
             </div>
           </div>
-          <LinkTo href={"ebooks?=category=" + content?.category}>
+          <LinkTo href={`ebooks/${content.id}`}>
             <h1
               className={combineClasses(
                 classes.featured_article__title,

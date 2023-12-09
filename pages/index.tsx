@@ -38,6 +38,7 @@ async function getCategories() {
 
 const Home = () => {
   const [categories, setCategories] = useState<any[]>([]);
+  const [cases, setCases] = useState<any[]>([]);
   const [mode, setMode] = useState("eBooks");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAddEbookFormOpen, setIsAddEbookFormOpen] = useState(false);
@@ -47,12 +48,22 @@ const Home = () => {
 
   useEffect(async () => {
     const data = await getCategories();
+    const cases = await pb.collection('cases').getFullList();
+    for(let i = 0; i < cases.length; i++) {
+      const authorId = cases[i].authorID;
+      const author = await pb.collection('authors').getFullList({
+        filter: `id = "${authorId}"`
+      })
+      cases[i].author = author;
+    }
+    console.log("hi", cases);
+    setCases(cases);
     setCategories(data);
   }, []);
   console.log(categories);
 
   const handleModeChange = () => {
-    setMode(mode === "eBooks" ? "Articles" : "eBooks");
+    setMode(mode === "eBooks" ? "Case Studies" : "eBooks");
   };
 
   const enableModal = () => {
@@ -152,13 +163,13 @@ const Home = () => {
             onClick={handleModeChange}
           >
             <span className="mr-2">
-              Switch to {mode === "eBooks" ? "Articles" : "eBooks"}
+              Switch to {mode === "eBooks" ? "Case Studies" : "eBooks"}
             </span>
           </button>
         </div>
         <div className="flex justify-center">
           <h1 className="text-4xl font-bold mt-5 mb-5">
-            {mode === "eBooks" ? "Categories" : "All Articles"}
+            {mode === "eBooks" ? "Categories" : "All Case Studies"}
           </h1>
         </div>
         <div className="flex flex-row-reverse items-right">
@@ -201,7 +212,7 @@ const Home = () => {
               <EbooksIndexPage ebooksPerPage={2} ebooks={category.ebooks} />
             </>
           ))}
-          {mode !== "eBooks" && <CaseIndexPage casesPerPage={6} />}
+          {mode !== "eBooks" && <CaseIndexPage casesPerPage={6} cases={cases} />}
         </div>
       </div>
 
