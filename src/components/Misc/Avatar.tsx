@@ -10,7 +10,7 @@ const Avatar = ({
   author,
   className,
 }: {
-  author: IAuthor;
+  author?: any[];
   className?: string;
 }) => {
   return (
@@ -20,14 +20,14 @@ const Avatar = ({
         className,
       )}
     >
-      {author.profilePic ? (
+      {author.profilePicPath ? (
         <img
-          src={transformImagePaths(author.profilePic)}
+          src={transformImagePaths(author.profilePicPath)}
           alt={author.name}
           width="100%"
         />
       ) : (
-        <p className="text-center font-medium text-white">{author.name[0]}</p>
+        <p className="text-center font-medium text-white">{author.name}</p>
       )}
     </div>
   );

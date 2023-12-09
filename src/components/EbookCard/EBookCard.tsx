@@ -8,6 +8,11 @@ import {
 import LinkTo from "../LinkTo";
 import Avatar from "../Misc/Avatar";
 
+const formatDate = (rawDate: string) => {
+  const date = new Date(rawDate);
+  return date.toLocaleDateString("en-US");
+};
+
 interface IProp {
   content: IEbookHeaderData;
   path: string;
@@ -18,7 +23,8 @@ interface IProp {
  * @returns  a ebook card component
  */
 
-const EBookCard = ({ content, path }: IProp) => {
+const EBookCard = ({ content }: { content : any[] }) => {
+  // console.log(content);
   return (
     <>
       <div
@@ -35,26 +41,26 @@ const EBookCard = ({ content, path }: IProp) => {
           <div className={"mt-0 mb-[10px] flex items-center"}>
             <div className={"flex items-center"}>
               <Avatar
-                author={content.author}
+                author={content.author[0]}
                 className="w-[50px] h-[50px] mr-3 text-xl"
               />
               <LinkTo
-                href={"/ebooks?author=" + content.author.name}
+                href={"/ebooks?author=" + content.author[0].name}
                 passHref
                 className={combineClasses(
                   classes.author_name,
                   "text-[14px] md:text-[16px] my-0 font-medium"
                 )}
               >
-                {content.author.name}
+                {content.author[0].name}
               </LinkTo>
             </div>
           </div>
-          <LinkTo href={"ebooks?=category=" + content.category}>
+          <LinkTo href={"ebooks?=category=" + content?.category}>
             <h1
               className={combineClasses(
                 classes.featured_article__title,
-                "text-[24px] font-bold mt-0 mb-[10px]"
+                "text-[27px] font-bold mt-[20px] mb-[10px]"
               )}
             >
               {content.title}
@@ -63,7 +69,7 @@ const EBookCard = ({ content, path }: IProp) => {
           <p
             className={combineClasses(
               classes.featured_article__intro,
-              "text-[14px] font-regular mt-0 mb-[10px]"
+              "text-[20px] font-regular mt-0 mb-[10px]"
             )}
           >
             {content.description}
@@ -74,7 +80,7 @@ const EBookCard = ({ content, path }: IProp) => {
               "font-normal text-xs pt-3 mb-0"
             )}
           >
-            {content.date}
+            {formatDate(content.date)}
           </p>
         </div>
         <div
@@ -84,11 +90,11 @@ const EBookCard = ({ content, path }: IProp) => {
           )}
         >
           <img
-            src={transformImagePaths(content.thumbnail)}
+            src={transformImagePaths(content.thumbnailPath)}
             alt={content.title}
             className="max-h-80 h-full w-full object-cover"
           />
-          <LinkTo href={"ebooks?=category=" + content.category} />
+          {/* <LinkTo href={"ebooks?=category=" + content.category} /> */}
         </div>
       </div>
     </>

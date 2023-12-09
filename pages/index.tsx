@@ -4,19 +4,44 @@ import Modal from "../src/components/Modal/Modal";
 import CaseIndexPage from "../src/components/CaseIndexPage";
 import EbooksIndexPage from "../src/components/EbookIndexPage";
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import PocketBase from "pocketbase";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import CategoryActionsDropdown from '../src/components/CategoryActionsDropdown/CategoryActionsDropdown';
+import AddEbookForm from '../src/components/AddEbookForm/AddEbookForm';
+
+const pb = new PocketBase('http://127.0.0.1:8090');
+pb.autoCancellation(false);
 
 async function getCategories() {
-  const res = await fetch("http://127.0.0.1:8090/api/collections/categories/records?page=1&perPage=30");
-  const data = await res.json();
-  return data?.items as any[];
+  const data = await pb.collection('categories').getFullList();
+  
+  for(let i = 0; i < data.length; i++) {
+    const categoryId = data[i].id;
+    const ebooks = await pb.collection('ebooks').getFullList({
+      filter: `categoryID = "${categoryId}"`
+    });
+    data[i].ebooks = ebooks;
+    for(let j = 0; j < ebooks.length; j++) {
+      const authorId = ebooks[j].authorID;
+      const author = await pb.collection('authors').getFullList({
+        filter: `id = "${authorId}"`
+      })
+      ebooks[j].author = author;
+    }
+  }
+
+  return data;
 }
+
+
 
 const Home = () => {
   const [categories, setCategories] = useState<any[]>([]);
   const [mode, setMode] = useState("eBooks");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAddEbookFormOpen, setIsAddEbookFormOpen] = useState(false);
+
 
   const router = useRouter();
 
@@ -24,6 +49,7 @@ const Home = () => {
     const data = await getCategories();
     setCategories(data);
   }, []);
+  console.log(categories);
 
   const handleModeChange = () => {
     setMode(mode === "eBooks" ? "Articles" : "eBooks");
@@ -37,17 +63,32 @@ const Home = () => {
     setIsModalOpen(false);
   };
 
+  const enableAddEbookForm = () => {
+    setIsAddEbookFormOpen(true);
+  };
+
+  const disableAddEbookForm = () => {
+    setIsAddEbookFormOpen(false);
+  };
+
   const handleSubmit = async (formData: { name: string; cancerType: string }) => {
     // Make your API post request here using formData
-    console.log('Form data submitted:', formData);
+    // console.log('Form data submitted:', formData);
     // error handling
     if (formData.name === "" || formData.cancerType === "") {
       alert("Please fill out all fields");
       return;
     }
 
-    // cancerType must have no spaces
-    const cancerType = formData.cancerType.replace(/\s/g, "");
+    // const cancerType = formData.cancerType.replace(/\s/g, "");
+    // check if cancer type has spaces
+    const isSpace = formData.cancerType.includes(" ")
+    if(isSpace) {
+      alert("Cancer type must not have spaces");
+      return;
+    }
+
+    const cancerType = formData.cancerType;
 
     await fetch("http://127.0.0.1:8090/api/collections/categories/records", {
       method: "POST",
@@ -60,11 +101,47 @@ const Home = () => {
       }),
     });
 
+
+
     // refresh page
     router.reload();
     // Close the modal after submitting
     disableModal();
   };
+
+  const handleAddEbookSubmit = async (formData: any, categoryID: string) => {
+
+    if (formData.title === "" || formData.authorId === "" || formData.description === "") {
+      alert("Please fill out all fields");
+      return;
+    }
+
+    // if(formData.image === "" && formData.thumbnailPath === "") {
+    //   formData.thumbnailPath = "/public/histology/1.png";
+    // }
+    formData.thumbnailPath = "/public/histology/1.png";
+
+    const res = await fetch("http://127.0.0.1:8090/api/collections/ebooks/records", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: formData.title,
+        authorID: formData.authorId,
+        description: formData.description,
+        thumbnailPath: formData.thumbnailPath,
+        categoryID: categoryID,
+        image: formData.image,
+        date: new Date(Date.now()).toISOString(),
+      })
+    }) 
+
+    // refresh page
+    router.reload();
+    // Close the modal after submitting
+    disableAddEbookForm();
+  }
 
   return (
     <PageLayout home>
@@ -97,20 +174,37 @@ const Home = () => {
             </button>
           )}
         </div>
+        <Modal isOpen={isModalOpen} onClose={disableModal} onSubmit={handleSubmit} />
         <div className={"flex flex-col justify-center"}>
-          {mode === "eBooks" &&
-            categories?.map((category: any) => (
-              <>
-                <h2 className="text-4xl font-bold mt-5 mb-5" key={category.id}>
-                  {category.name}
-                </h2>
-                <hr></hr>
-              </>
-            ))}
+        {mode === 'eBooks' &&
+          categories?.map((category: any) => (
+            <>
+              <div className="flex items-center justify-between">
+                <h2 className="text-4xl font-bold mt-5 mb-5">{category.name}</h2>
+                <CategoryActionsDropdown
+                  onAddEbook={() => setIsAddEbookFormOpen(true)}
+                  onDeleteCategory={() => console.log('Delete category')} // Add your delete category logic here
+                  categoryID={category.id}
+                />
+              </div>
+              <hr />
+              {isAddEbookFormOpen && (
+                <AddEbookForm
+                  isOpen={isAddEbookFormOpen}
+                  onSubmit={(formData) => {
+                    handleAddEbookSubmit(formData, category.id);
+                  }}
+                  onCancel={() => setIsAddEbookFormOpen(false)}
+                  categoryID={category.id}
+                />
+              )}
+              <EbooksIndexPage ebooksPerPage={2} ebooks={category.ebooks} />
+            </>
+          ))}
           {mode !== "eBooks" && <CaseIndexPage casesPerPage={6} />}
         </div>
-        <Modal isOpen={isModalOpen} onClose={disableModal} onSubmit={handleSubmit} />
       </div>
+
     </PageLayout>
   );
 };

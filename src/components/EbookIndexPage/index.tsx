@@ -12,28 +12,30 @@ import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
  * @param param0 ebooks per page
  * @returns  an ebook index page
  */
-const EbookIndexPage = ({ ebooksPerPage = 6 }: { ebooksPerPage?: number }) => {
+const EbookIndexPage = ({ ebooksPerPage = 6, ebooks = [] }: { ebooksPerPage?: number, ebooks? : any[] }) => {
   const router = useRouter();
-  const { category, author } = router.query;
-  const categoryEbooks = SORTED_EBOOKS_BY_DATE.filter(
-    (each) => each.preview.category === category,
-  );
-  const authorEbooks = SORTED_EBOOKS_BY_DATE.filter(
-    (each) => each.preview.author.name === author,
-  );
+  // console.log(ebooks);
+  // const { category, author } = router.query;
+  // const categoryEbooks = ebooks.filter(
+  //   (each) => each.categoryID === category,
+  // );
+  // const authorEbooks = ebooks.filter(
+  //   (each) => each.authorID === author,
+  // );
 
-  const [EBOOKS, setEBOOKS] = useState(SORTED_EBOOKS_BY_DATE);
+  const [EBOOKS, setEBOOKS] = useState(ebooks);
 
-  useEffect(() => {
-    setEBOOKS(
-      category ? categoryEbooks : author ? authorEbooks : SORTED_EBOOKS_BY_DATE,
-    );
-  }, [category, author]);
+  // useEffect(() => {
+  //   setEBOOKS(
+  //     category ? categoryEbooks : author ? authorEbooks : ebooks,
+  //   );
+  // }, [category, author]);
 
   const [currentItems, setCurrentItems] = useState(EBOOKS);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
 
+  // console.log(currentItems)
   useEffect(() => {
     const endOffset = itemOffset + ebooksPerPage;
     setCurrentItems(EBOOKS.slice(itemOffset, endOffset));
@@ -49,28 +51,25 @@ const EbookIndexPage = ({ ebooksPerPage = 6 }: { ebooksPerPage?: number }) => {
     <div
       className={combineClasses(
         "container mt-10 md:pt-0 px-0 md:px-3",
-        category ? "pt-10" : "pt-14",
+        "pt-14",
       )}
     >
-      {category || author ? (
-        <h1
+      {/* <h1
           className="px-2 mb-[30px] text-[45px] font-bold"
           style={{ textTransform: "capitalize" }}
         >
-          {category || author}
           <hr className="mt-[10px]" />
-        </h1>
-      ) : null}
+        </h1> */}
 
       <div className="flex flex-wrap">
         {currentItems
-          ? (currentItems as any).map((each: IEbook, i: any) => (
-              <EbookCard content={each.preview} path={each.path} key={i} />
+          ? (currentItems as any).map((each: any[], i: any) => (
+              <EbookCard content={each} key={i} />
             ))
           : null}
       </div>
 
-      <ReactPaginate
+      {currentItems.length > 0 && <ReactPaginate
         breakLabel="..."
         nextLabel={<AiFillCaretRight />}
         onPageChange={handlePageClick}
@@ -79,7 +78,7 @@ const EbookIndexPage = ({ ebooksPerPage = 6 }: { ebooksPerPage?: number }) => {
         previousLabel={<AiFillCaretLeft />}
         containerClassName="pagination"
         activeClassName="active"
-      />
+      />}
     </div>
   );
 };
