@@ -6,6 +6,17 @@ The application consists of a collection of **E-books** where each e-book is a c
 
 Each case study contains information about a particular type of cancer, both in textual form and the high-resolution image that can be viewed using the **Histopathology-viewer**.
 
+## Backend Features
+
+The backend was written using **Pocketbase,** and has the following collections
+
+1. Categories: Stores all the categories of ebooks that are present
+2. Ebooks: Stores all of the ebooks that are present across all categories
+3. Authors: Stores the information about all the authors
+4. Cases: Stores information about all of the case studies present across all ebooks
+
+The case studies are loaded in using Pathomation UI. 
+
 ## Application Features
 
 - Fully responsive and mobile friendly.
@@ -49,17 +60,34 @@ Magic Wand - Automatically selects an object or area of choice in the image
 
 ## Quick Start Guide
 
-1. Download /Install the template:
-2. Run npm install
+### Backend
+
+1. Start the backend using
+
+   ```
+   ./pocketbase serve
+   ```
+2. The server will start running at `http://127.0.0.1:8090` and the two links will be given
+
+   ```
+   ├─ REST API: http://127.0.0.1:8090/api/
+   └─ Admin UI: http://127.0.0.1:8090/_/
+   ```
+3. Use the **Admin UI** link to access the backend.
+4. Here, you can add categories, ebooks, cases and authors using the UI, and the changes will be reflected in the frontend accordingly.
+
+### Frontend
+
+1. Run npm install
 
 ```bash
 npm install
 ```
 
-3. After installation is done run npm start
+2. After installation is done run npm start
 
 ```bash
 npm start
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

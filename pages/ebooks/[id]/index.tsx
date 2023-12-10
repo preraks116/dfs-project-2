@@ -7,6 +7,7 @@ import AddCaseForm from "../../../src/components/AddCaseForm/AddCaseForm";
 import { useRouter } from "next/router";
 import { format } from "path";
 
+// initialize pocketbase db instance
 const pb = new PocketBase('http://127.0.0.1:8090');
 pb.autoCancellation(false);
 
@@ -24,7 +25,6 @@ async function getCaseStudies(ebookID: string) {
     data[i].author = author;
   }
   
-  // const data = await pb.collection('cases').getFullList();
   return data;
 }
 
@@ -36,7 +36,7 @@ const EbookPage = ({params} : any) => {
   const [isAddCaseFormOpen, setIsAddCaseFormOpen] = useState(false);
 
   // const caseStudies = await getCaseStudies(params.id);
-    
+
   const router = useRouter();
   
 

@@ -133,10 +133,16 @@ const Home = () => {
       return;
     }
 
+    // get the name of the image
+    const name = formData.image.name;
+
+    // extract number from the name before the .png
+    const number = name.split('.')[0] != "1" ? name.split('.')[0] : "1";
+
     // if(formData.image === "" && formData.thumbnailPath === "") {
     //   formData.thumbnailPath = "/public/histology/1.png";
     // }
-    formData.thumbnailPath = "/public/histology/1.png";
+    formData.thumbnailPath = `/public/histology/${number}.png`;
 
     const res = await fetch("http://127.0.0.1:8090/api/collections/ebooks/records", {
       method: "POST",
