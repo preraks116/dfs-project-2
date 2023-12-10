@@ -38,7 +38,7 @@ const CaseCard = ({ content }: any[]) => {
   return (
     <div className={"w-full lg:w-1/3 md:w-1/2 md:px-[15px] px-2 mb-[30px]"}>
       <LinkTo
-        href={transformPath()}
+        href={`/cases/${content.id}`}
         passHref
         className={combineClasses(
           classes.case_card,
@@ -61,7 +61,7 @@ const CaseCard = ({ content }: any[]) => {
             <p className={"font-normal text-xs pt-3 mb-0 md:mb-3"}>
               {formatDate(content.date)}
             </p>
-            <LinkTo href={transformPath()} passHref>
+            <LinkTo href={`/cases/${content.id}`} passHref>
               <h1
                 className={
                   "text-[22px] font-bold cursor-pointer tracking-wide hover:text-blue-600"
