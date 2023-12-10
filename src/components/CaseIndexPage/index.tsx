@@ -46,9 +46,13 @@ const CaseIndexPage = ({ casesPerPage = 6, cases = [] }: { casesPerPage?: number
       )}
     >
       <div className="flex flex-wrap">
-        {currentItems.map((each: any[], i: any) => (
+        {currentItems.length > 0 ? (currentItems.map((each: any[], i: any) => (
           <CaseCard content={each} key={i} />
-        ))}
+        ))) : (
+          <div className="w-full text-center">
+            <h1 className="text-2xl">No case studies found. Use the menu to add case studies.</h1>
+          </div>
+        )}
       </div>
 
       {currentItems.length > 0 && <ReactPaginate

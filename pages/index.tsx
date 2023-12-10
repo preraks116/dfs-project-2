@@ -42,6 +42,7 @@ const Home = () => {
   const [mode, setMode] = useState("eBooks");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAddEbookFormOpen, setIsAddEbookFormOpen] = useState(false);
+  const [currentCategory, setCurrentCategory] = useState("");
 
 
   const router = useRouter();
@@ -120,6 +121,11 @@ const Home = () => {
     disableModal();
   };
 
+  const handleEbookOpen = (categoryID: string) => {
+    setCurrentCategory(categoryID);
+    setIsAddEbookFormOpen(true);
+  }
+
   const handleAddEbookSubmit = async (formData: any, categoryID: string) => {
 
     if (formData.title === "" || formData.authorId === "" || formData.description === "") {
@@ -193,14 +199,15 @@ const Home = () => {
               <div className="flex items-center justify-between">
                 <h2 className="text-4xl font-bold mt-5 mb-5">{category.name}</h2>
                 <CategoryActionsDropdown
-                  onAddEbook={() => setIsAddEbookFormOpen(true)}
+                  onAddEbook={() => handleEbookOpen(category.id)}
                   onDeleteCategory={() => console.log('Delete category')} // Add your delete category logic here
                   categoryID={category.id}
                 />
               </div>
               <hr />
-              {isAddEbookFormOpen && (
+              {currentCategory == category.id && isAddEbookFormOpen && (
                 <AddEbookForm
+                  key={category.id}
                   isOpen={isAddEbookFormOpen}
                   onSubmit={(formData) => {
                     handleAddEbookSubmit(formData, category.id);
